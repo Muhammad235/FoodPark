@@ -203,7 +203,7 @@
                     html('<span class="spinner-border spinner-border-sm text-light" role="status"  aria-hidden="true"></span>Loading...')
                 },
                 success: function(response) {
-
+                  updateCart()
                   toastr.success(response.message);
    
                 },

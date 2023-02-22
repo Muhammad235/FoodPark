@@ -30,18 +30,18 @@ function loadProductModal(productId) {
     })
 }
 
-// update cart 
 
+// update cart 
 function updateCart() {
     $.ajax({
         method : 'GET',
-        url : '',
+        url : "{{ route('get.cart.products') }}",
         beforeSend: function(){
  
         },
         success: function(response){
-
-
+            // console.log(response);
+            $('.cart_content').html(response)
         },
         error: function(xhr, status, error){
             // console.error(error)

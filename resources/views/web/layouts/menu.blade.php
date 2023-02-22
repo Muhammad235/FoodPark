@@ -79,27 +79,9 @@
             <h5>total item (05)</h5>
             <span class="close_cart"><i class="fal fa-times"></i></span>
         </div>
-        <ul>
-            @foreach (Cart::content() as $cartProduct)
-            <li>
-                <div class="menu_cart_img">
-                    <img src="{{ asset($cartProduct->options->product_info['image']) }}" alt="menu" class="img-fluid w-100">
-                </div>
-                <div class="menu_cart_text">
-                    <a class="title" href="{{ $cartProduct->options->product_info['slug'] }}">{{ $cartProduct->name }} </a>
-                    <p class="size">Qty: {{ $cartProduct->qty }}</p>
 
-                    <p class="size">{{ @$cartProduct->options->product_size[0]['name'] }}</p>
-
-                    @foreach ($cartProduct->options->product_options as $productOptions)
-                        <span class="extra">{{ @$productOptions['name'] }}</span>   
-                    @endforeach
-                    
-                    <p class="price">{{ currencyPosition($cartProduct->price) }}</p>
-                </div>
-                <span class="del_icon"><i class="fal fa-times"></i></span>
-            </li>  
-            @endforeach
+        {{-- Cart content is been updated dynamically from ajax-script.sidebar-Cart-Item --}}
+        <ul class="cart_content">
 
         </ul>
         <p class="subtotal">sub total <span>$1220.00</span></p>

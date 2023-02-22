@@ -152,6 +152,9 @@
         });
     </script>
 
+    {{-- global ajax script file--}}
+    @include('web.layouts.ajax-script.global-scripts')
+
     @stack('scripts')
 </body>
 

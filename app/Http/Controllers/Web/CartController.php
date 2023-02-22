@@ -10,6 +10,12 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 
 class CartController extends Controller
 {
+    public function getCartProducts()
+    {
+        $cartProducts = Cart::content();
+
+        return view('web.layouts.ajax-script.sidebar-Cart-Item', compact('cartProducts'))->render();
+    }
     public function store(Request $request){
 
         try {
@@ -30,7 +36,7 @@ class CartController extends Controller
             ];
 
             if($productSize !== null){
-                $options['product_size'][] = [
+                $options['product_size'] = [
                     'id' => $productSize?->id,
                     'name' => $productSize?->name,
                     'price' => $productSize?->price,
