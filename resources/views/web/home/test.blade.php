@@ -1,0 +1,2 @@
+
+<home.x-slider />
