@@ -4,7 +4,7 @@
             <div class="col-md-8 col-lg-7 col-xl-6 m-auto text-center">
                 <div class="fp__section_heading mb_40">
                     <h4>testimonial</h4>
-                    <h2>our customar feedbacks</h2>
+                    <h2>our customer feedbacks</h2>
                     <span>
                         <img src="images/heading_shapes.png" alt="shapes" class="img-fluid w-100">
                     </span>
