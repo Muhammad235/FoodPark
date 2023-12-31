@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 class WebPageController extends Controller
 {
     public function index() : View {
+        
         return view('web.home.index');
     }
 }

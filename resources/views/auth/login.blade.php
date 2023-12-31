@@ -39,19 +39,23 @@
                                     <div class="col-xl-12">
                                         <div class="fp__login_imput">
                                             <label>email</label>
-                                            <input type="email" name="email" placeholder="Email" required >
+                                            <input type="email" name="email" value="{{ old('email') }}" placeholder="Email" required >
+
+                                            {{-- @error('email')
+                                              <p class="text-danger">{{ $message}}</p> 
+                                            @enderror --}}
                                         </div>
                                     </div>
                                     <div class="required autofocuscol-xl-12">
                                         <div class="fp__login_imput">
                                             <label>password</label>
-                                            <input type="password" name="password" placeholder="Password" required autofocus>
+                                            <input type="password" name="password" value="{{ old('password') }}" placeholder="Password" required autofocus>
                                         </div>
                                     </div>
                                     <div class="col-xl-12">
                                         <div class="fp__login_imput fp__login_check_area">
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value=""
+                                                <input class="form-check-input" type="checkbox" value="{{ old('remember') }}"
                                                     id="flexCheckDefault" name="remember">
                                                 <label class="form-check-label" for="flexCheckDefault">
                                                     Remeber Me
@@ -74,7 +78,7 @@
                                 <li><a href="#"><i class="fab fa-twitter"></i></a></li>
                                 <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
                             </ul>
-                            <p class="create_account">Dont’t have an aceount ? <a href="sign_up.html">Create Account</a>
+                            <p class="create_account">Dont’t have an aceount ? <a href="{{route('register')}}">Create Account</a>
                             </p>
                         </div>
                     </div>

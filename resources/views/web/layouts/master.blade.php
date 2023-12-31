@@ -85,6 +85,21 @@
         SCROLL BUTTON END 
     ==============================-->
 
+    
+    <!--=============================
+        DISPLAY ANY ERROR START
+    ==============================-->
+    @if ($errors->any())
+        @foreach ($errors->all() as $error)
+        @php
+         toastr()->error("$error")
+        @endphp
+        @endforeach
+    @endif
+    <!--=============================
+       DISPLAY ANY ERROR END
+    ==============================-->   
+
 
     <!--jquery library js-->
     <script src="{{ asset('web/js/jquery-3.6.0.min.js') }}"></script>
