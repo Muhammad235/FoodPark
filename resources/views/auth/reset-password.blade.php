@@ -43,7 +43,7 @@
                                     <div class="col-xl-12">
                                         <div class="fp__login_imput">
                                             <label>email</label>
-                                            <input type="email" placeholder="Email" name="email" value="{{ old('email') }}">
+                                            <input type="email" placeholder="Email" name="email" value="{{ old('email', $request->email) }}">
                                         </div>
                                     </div>
                                     <div class="col-xl-12">
@@ -60,7 +60,7 @@
                                     </div>
                                     <div class="col-xl-12">
                                         <div class="fp__login_imput">
-                                            <button type="submit" class="common_btn">verify mail</button>
+                                            <button type="submit" class="common_btn">Reset password</button>
                                         </div>
                                     </div>
                                 </div>
