@@ -28,3 +28,17 @@
   gtag('config', 'UA-94034622-3');
 </script>
 <!-- /END GA --></head>
+
+    <!--=============================
+        DISPLAY ANY ERROR START
+    ==============================-->
+    @if ($errors->any())
+        @foreach ($errors->all() as $error)
+        @php
+         toastr()->error("$error")
+        @endphp
+        @endforeach
+    @endif
+    <!--=============================
+       DISPLAY ANY ERROR END
+    ==============================--> 

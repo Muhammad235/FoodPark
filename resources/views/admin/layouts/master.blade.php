@@ -12,6 +12,7 @@
       <div class="main-content">
         @yield('content')
       </div>
+      
       <footer class="main-footer">
         <div class="footer-left">
           Copyright &copy; 2018 <div class="bullet"></div> Design By <a href="https://nauval.in/">Muhamad Nauval Azhar</a>
@@ -22,6 +23,7 @@
       </footer>
     </div>
   </div>
+ 
 
   <!-- General JS Scripts -->
   <script src="{{ asset('admin/assets/modules/jquery.min.js') }}"></script>
