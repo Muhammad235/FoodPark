@@ -19,9 +19,6 @@ use App\Http\Controllers\Admin\AdminAuthController;
 
 Route::get('/', [WebPageController::class, 'index']);
 
-// Admin Auth Routes
-Route::get('admin/login', [AdminAuthController::class, 'index'])->name('admin.login');
-
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

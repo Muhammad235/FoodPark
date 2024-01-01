@@ -39,7 +39,7 @@
                                     <div class="col-xl-12">
                                         <div class="fp__login_imput">
                                             <label>email</label>
-                                            <input type="email" name="email" value="{{ old('email') }}" placeholder="Email" required >
+                                            <input type="email" name="email" value="{{ old('email') }}" placeholder="Email" >
 
                                             {{-- @error('email')
                                               <p class="text-danger">{{ $message}}</p> 
@@ -49,7 +49,7 @@
                                     <div class="required autofocuscol-xl-12">
                                         <div class="fp__login_imput">
                                             <label>password</label>
-                                            <input type="password" name="password" value="{{ old('password') }}" placeholder="Password" required autofocus>
+                                            <input type="password" name="password" value="{{ old('password') }}" placeholder="Password" autofocus>
                                         </div>
                                     </div>
                                     <div class="col-xl-12">

@@ -15,7 +15,7 @@
               <div class="card-header"><h4>Login</h4></div>
 
               <div class="card-body">
-                <form method="POST" method="POST" action="{{ route('login') }}" class="needs-validation" novalidate="">
+                <form method="POST" method="POST" action="{{ route('login') }}" >
                     @csrf
                     <div class="form-group">
                     <label for="email">Email</label>
@@ -34,7 +34,7 @@
                         </a>
                       </div>
                     </div>
-                    <input id="password" type="password" class="form-control" name="password" tabindex="2" required>
+                    <input id="password" type="password" class="form-control" name="password" tabindex="2">
                     <div class="invalid-feedback">
                       please fill in your password
                     </div>
