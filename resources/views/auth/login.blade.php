@@ -61,7 +61,7 @@
                                                     Remeber Me
                                                 </label>
                                             </div>
-                                            <a href="forgot_password.html">Forgot Password ?</a>
+                                            <a href="{{ route('password.request') }}">Forgot Password ?</a>
                                         </div>
                                     </div>
                                     <div class="col-xl-12">
