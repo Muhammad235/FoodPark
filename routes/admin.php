@@ -14,4 +14,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'r
     Route::get('dashboard', [AdminDashboardController::class, 'index'])->name('dashbaord');
   
     Route::get('profile', [ProfileController::class, 'index'])->name('profile');
+    Route::put('profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::put('profile/reset-password', [AdminAuthController::class, 'update'])->name('password.update');
+
 });
