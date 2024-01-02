@@ -12,7 +12,7 @@
               <h4>Update User settings</h4>
             </div>
             <div class="card-body">
-              <form method="POST" action="{{ route('admin.profile.update') }}">
+              <form enctype="multipart/form-data" method="POST" action="{{ route('admin.profile.update') }}">
                 @csrf
                 @method('PUT')
                 <div class="form-group">
@@ -70,13 +70,14 @@
 @endsection
 
 @push('scripts')
-  <script>
-    $(document).ready(function (){
+<script>
+  $(document).ready(function () {
       $('.image-preview').css({
-        'background-image': 'url({{ asset('admin/assets/img/avatar/avatar.png') }})',
-        'background-size': 'cover',
-        'background-position': 'center',
-      })
-    })
-  </script>
+          'background-image': 'url({{ asset(auth()->user()->avatar) }})',
+          'background-size': 'cover',
+          'background-position': 'center',
+      });
+  });
+</script>
+
 @endpush
