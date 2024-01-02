@@ -16,6 +16,14 @@
                 @csrf
                 @method('PUT')
                 <div class="form-group">
+                    <div class="col-sm-12 col-md-7">
+                        <div id="image-preview" class="image-preview">
+                          <label for="image-upload" id="image-label">Choose File</label>
+                          <input type="file" name="avatar" id="image-upload" />
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
                     <label>Name</label>
                     <input type="text" class="form-control" name="name" value="{{ auth()->user()->name }}">
                 </div>
@@ -34,7 +42,7 @@
               <h4>Update Password</h4>
             </div>
             <div class="card-body">
-              <form method="POST" action="{{ route('admin.password.update')}}">
+              <form method="POST" action="{{ route('admin.password.update') }}">
                 @csrf
                 @method('PUT')
                 <div class="form-group">
@@ -57,8 +65,18 @@
             </div>
         </div>
     </div>
-
-
-
   </section>
+
 @endsection
+
+@push('scripts')
+  <script>
+    $(document).ready(function (){
+      $('.image-preview').css({
+        'background-image': 'url({{ asset('admin/assets/img/avatar/avatar.png') }})',
+        'background-size': 'cover',
+        'background-position': 'center',
+      })
+    })
+  </script>
+@endpush

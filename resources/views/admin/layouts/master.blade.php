@@ -26,6 +26,8 @@
  
 
   <!-- General JS Scripts -->
+  <script type="text/javascript" src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+
   <script src="{{ asset('admin/assets/modules/jquery.min.js') }}"></script>
   <script src="{{ asset('admin/assets/modules/popper.js') }}"></script>
   <script src="{{ asset('admin/assets/modules/tooltip.js') }}"></script>
@@ -42,11 +44,16 @@
   <script src="{{ asset('admin/assets/modules/summernote/summernote-bs4.js') }}"></script>
   <script src="{{ asset('admin/assets/modules/chocolat/dist/js/jquery.chocolat.min.js') }}"></script> --}}
 
+  <script src="{{ asset('admin/assets/modules/upload-preview/assets/js/jquery.uploadPreview.min.js')}}"></script>
+
   <!-- Page Specific JS File -->
-  <script src="{{ asset('admin/assets/js/page/index-0.js') }}"></script>
+  <script src="{{ asset('admin/assets/js/page/upload-preview.js') }}"></script>
+
   
   <!-- Template JS File -->
   <script src="{{ asset('admin/assets/js/scripts.js') }}"></script>
   <script src="{{ asset('admin/assets/js/custom.js') }}"></script>
+
+  @stack('scripts')
 </body>
 </html>
