@@ -23,7 +23,7 @@ class ProfileController extends Controller
         
         $user = Auth::user();
         
-        $imagePath = $this->uploadImage($request, 'avatar', '/admin/assets/img/avatar');
+        $imagePath = $this->uploadImage($request, 'avatar', '/avatar_img');
 
         $user->update([
             'name' => $request->name,
