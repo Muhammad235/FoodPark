@@ -4,6 +4,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Web\ProfileController;
 use App\Http\Controllers\Web\WebPageController;
+use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\Web\DashboardController;
 
 
@@ -24,6 +25,8 @@ Route::get('/', [WebPageController::class, 'index']);
 Route::group(['middleware' => 'auth'], function() {
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::put('profile', [ProfileController::class, 'update'])->name('profile.update');
+
+    Route::put('profile/password', [PasswordController::class, 'update'])->name('password.update');
 });
 
 // Route::middleware('auth')->group(function () {
