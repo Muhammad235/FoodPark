@@ -34,7 +34,7 @@
                                 <div class="dasboard_header_img">
                                     <img src="{{ auth()->user()->avatar }}" alt="user" class="img-fluid w-100">
                                     <label for="upload"><i class="far fa-camera"></i></label>
-                                    <form  enctype="multipart/form-data" action="{{ route('profile.avatar.update') }}" method="" id="avatar_form">
+                                    <form enctype="multipart/form-data" id="avatar_form" method="POST">
                                         <input type="file" id="upload" name="avatar" hidden>
                                     </form>
                                 </div>
@@ -71,8 +71,13 @@
                                     aria-controls="v-pills-settings" aria-selected="false"><span><i
                                             class="fas fa-user-lock"></i></span> Change Password </button>
 
-                                <button class="nav-link" type="button"><span> <i class="fas fa-sign-out-alt"></i>
-                                    </span> Logout</button>
+                                    <form method="POST" action="{{ route('logout') }}">
+                                        @csrf
+                                        <button class="nav-link" type="submit" onclick="event.preventDefault();
+                                        this.closest('form').submit();"><span> <i class="fas fa-sign-out-alt"></i>
+                                        </span> Logout</button>
+                            
+                                    </form>                                    
                             </div>
                         </div>
                     </div>
@@ -1160,12 +1165,28 @@
 
 @push('scripts')
     <script>
-        $(document).ready(function() {
-            $('#upload').on('change', function() {
-                let form = $('#avatar_form')[0];
-                let formData = new FormData(form);
-                console.log(formData);
-            })
-        })
+$(document).ready(function() {
+    $('#upload').on('change', function() {
+        let form = $('#avatar_form')[0];
+        let formData = new FormData(form);
+
+        console.log(formData);
+
+        $.ajax({
+            method: 'PUT',
+            url: "{{ route('profile.avatar.update') }}",
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (response) {
+                console.log(response); 
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+    });
+});
+
     </script>
 @endpush
