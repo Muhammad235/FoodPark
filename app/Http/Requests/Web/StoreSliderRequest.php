@@ -4,7 +4,7 @@ namespace App\Http\Requests\Web;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ProfileUpdateRequest extends FormRequest
+class StoreSliderRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,9 +22,13 @@ class ProfileUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required', 'max:50'],
-            'email' => ['email', 'email', 'lowercase', 'max:200', 'unique:users,email,'.auth()->user()->id],
-            'avatar' => ['nullable', 'image']
+            'image' => ['required', 'image', 'max:3000'],
+            'offer' => ['nullable', 'string', 'max:50'],
+            'title' => ['required', 'string', 'max:255'],
+            'sub_title' => ['required', 'string', 'max:255'],
+            'short_description' => ['required', 'string', 'max:255'],
+            'button_link' => ['nullable', 'string', 'max:255'],
+            'status' => ['boolean'],
         ];
     }
 }
