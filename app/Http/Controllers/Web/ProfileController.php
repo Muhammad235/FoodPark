@@ -66,6 +66,27 @@ class ProfileController extends Controller
     }
 
     /**
+     * Update user avatar.
+     */
+    function updateAvatar(Request $request) : RedirectResponse {
+        
+        dd($request->all());
+
+        // $user = Auth::user();
+        
+        // $imagePath = $this->uploadImage($request, 'avatar', '/avatar_img');
+
+        // $user->update([
+        //     'avatar' => isset($imagePath) ? $imagePath : $user->avatar
+        // ]);
+
+        // toastr()->success("Updated successfully");
+            
+        // return redirect()->back();
+
+    }
+
+    /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)

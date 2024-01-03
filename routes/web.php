@@ -25,8 +25,8 @@ Route::get('/', [WebPageController::class, 'index']);
 Route::group(['middleware' => 'auth'], function() {
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::put('profile', [ProfileController::class, 'update'])->name('profile.update');
-
     Route::put('profile/password', [PasswordController::class, 'update'])->name('password.update');
+    Route::put('profile/avatar', [ProfileController::class, 'updateAvatar'])->name('profile.avatar.update');
 });
 
 // Route::middleware('auth')->group(function () {

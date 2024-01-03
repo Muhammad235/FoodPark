@@ -130,6 +130,7 @@
     <!--main/custom js-->
     <script src="{{ asset('web/js/main.js') }}"></script>
 
+    @stack('scripts')
 </body>
 
 </html>

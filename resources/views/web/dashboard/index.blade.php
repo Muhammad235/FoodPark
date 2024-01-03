@@ -34,7 +34,9 @@
                                 <div class="dasboard_header_img">
                                     <img src="{{ auth()->user()->avatar }}" alt="user" class="img-fluid w-100">
                                     <label for="upload"><i class="far fa-camera"></i></label>
-                                    <input type="file" id="upload" hidden>
+                                    <form  enctype="multipart/form-data" action="{{ route('profile.avatar.update') }}" method="" id="avatar_form">
+                                        <input type="file" id="upload" name="avatar" hidden>
+                                    </form>
                                 </div>
                                 <h2>{{ auth()->user()->name }}</h2>
                             </div>
@@ -1155,3 +1157,15 @@
         DASHBOARD END 
     ==========================-->
 @endsection
+
+@push('scripts')
+    <script>
+        $(document).ready(function() {
+            $('#upload').on('change', function() {
+                let form = $('#avatar_form')[0];
+                let formData = new FormData(form);
+                console.log(formData);
+            })
+        })
+    </script>
+@endpush
