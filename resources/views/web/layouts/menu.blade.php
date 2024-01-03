@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg main_menu">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">
-            <img src="images/logo.png" alt="FoodPark" class="img-fluid">
+            <img src="{{ asset('web/images/logo.png')}}" alt="FoodPark" class="img-fluid">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -82,7 +82,7 @@
         <ul>
             <li>
                 <div class="menu_cart_img">
-                    <img src="images/menu8.png" alt="menu" class="img-fluid w-100">
+                    <img src="{{ asset('images/menu8.png')}}" alt="menu" class="img-fluid w-100">
                 </div>
                 <div class="menu_cart_text">
                     <a class="title" href="#">Hyderabadi Biryani </a>
@@ -95,7 +95,7 @@
             </li>
             <li>
                 <div class="menu_cart_img">
-                    <img src="images/menu4.png" alt="menu" class="img-fluid w-100">
+                    <img src="{{ asset('images/menu4.png')}}" alt="menu" class="img-fluid w-100">
                 </div>
                 <div class="menu_cart_text">
                     <a class="title" href="#">Chicken Masalas</a>
@@ -107,7 +107,7 @@
             </li>
             <li>
                 <div class="menu_cart_img">
-                    <img src="images/menu5.png" alt="menu" class="img-fluid w-100">
+                    <img src="{{ asset('images/menu5.png')}}" alt="menu" class="img-fluid w-100">
                 </div>
                 <div class="menu_cart_text">
                     <a class="title" href="#">Competently Supply Customized Initiatives</a>
@@ -120,7 +120,7 @@
             </li>
             <li>
                 <div class="menu_cart_img">
-                    <img src="images/menu6.png" alt="menu" class="img-fluid w-100">
+                    <img src="{{ asset('images/menu6.png')}}" alt="menu" class="img-fluid w-100">
                 </div>
                 <div class="menu_cart_text">
                     <a class="title" href="#">Hyderabadi Biryani</a>
