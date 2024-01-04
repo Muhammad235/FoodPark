@@ -21,7 +21,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="chefs.html">chefs</a>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="nav-link" href="#">pages <i class="far fa-angle-down"></i></a>
                     <ul class="droap_menu">
                         <li><a href="menu_details.html">menu details</a></li>
@@ -39,7 +39,7 @@
                         <li><a href="privacy_policy.html">privacy policy</a></li>
                         <li><a href="terms_condition.html">terms and condition</a></li>
                     </ul>
-                </li>
+                </li> --}}
                 <li class="nav-item">
                     <a class="nav-link" href="blogs.html">blog</a>
                 </li>

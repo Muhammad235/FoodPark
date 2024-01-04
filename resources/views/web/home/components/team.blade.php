@@ -7,10 +7,11 @@
                     <h4>our team</h4>
                     <h2>meet our expert chefs</h2>
                     <span>
-                        <img src="images/heading_shapes.png" alt="shapes" class="img-fluid w-100">
+                        <img src="{{ asset('web/images/heading_shapes.png') }}" alt="shapes" class="img-fluid w-100">
                     </span>
-                    <p>Objectively pontificate quality models before intuitive information. Dramatically
-                        recaptiualize multifunctional materials.</p>
+                    {{-- <p>Objectively pontificate quality models before intuitive information. Dramatically
+                        recaptiualize multifunctional materials.</p> --}}
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, facilis tempore nemo elum!</p>
                 </div>
             </div>
         </div>
@@ -19,7 +20,7 @@
             <div class="col-xl-3 wow fadeInUp" data-wow-duration="1s">
                 <div class="fp__single_team">
                     <div class="fp__single_team_img">
-                        <img src="images/chef_1.jpg" alt="team" class="img-fluid w-100">
+                        <img src="{{ asset('web/images/chef_1.jpg') }}" alt="team" class="img-fluid w-100">
                     </div>
                     <div class="fp__single_team_text">
                         <h4>ismat joha</h4>
@@ -36,7 +37,7 @@
             <div class="col-xl-3 wow fadeInUp" data-wow-duration="1s">
                 <div class="fp__single_team">
                     <div class="fp__single_team_img">
-                        <img src="images/chef_2.jpg" alt="team" class="img-fluid w-100">
+                        <img src="{{ asset('web/images/chef_2.jpg') }}" alt="team" class="img-fluid w-100">
                     </div>
                     <div class="fp__single_team_text">
                         <h4>arun chandra</h4>
@@ -53,7 +54,7 @@
             <div class="col-xl-3 wow fadeInUp" data-wow-duration="1s">
                 <div class="fp__single_team">
                     <div class="fp__single_team_img">
-                        <img src="images/chef_3.jpg" alt="team" class="img-fluid w-100">
+                        <img src="{{ asset('web/images/chef_3.jpg') }}" alt="team" class="img-fluid w-100">
                     </div>
                     <div class="fp__single_team_text">
                         <h4>isita rahman</h4>
@@ -70,7 +71,7 @@
             <div class="col-xl-3 wow fadeInUp" data-wow-duration="1s">
                 <div class="fp__single_team">
                     <div class="fp__single_team_img">
-                        <img src="images/chef_4.jpg" alt="team" class="img-fluid w-100">
+                        <img src="{{ asset('web/images/chef_4.jpg') }}" alt="team" class="img-fluid w-100">
                     </div>
                     <div class="fp__single_team_text">
                         <h4>khandakar rashed</h4>
@@ -87,7 +88,7 @@
             <div class="col-xl-3 wow fadeInUp" data-wow-duration="1s">
                 <div class="fp__single_team">
                     <div class="fp__single_team_img">
-                        <img src="images/chef_5.jpg" alt="team" class="img-fluid w-100">
+                        <img src="{{ asset('web/images/chef_5.jpg') }}" alt="team" class="img-fluid w-100">
                     </div>
                     <div class="fp__single_team_text">
                         <h4>naurin nipu</h4>

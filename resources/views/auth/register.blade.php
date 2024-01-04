@@ -31,7 +31,7 @@
                 <div class="row wow fadeInUp" data-wow-duration="1s">
                     <div class="col-xxl-5 col-xl-6 col-md-9 col-lg-7 m-auto">
                         <div class="fp__login_area">
-                            <h2>Welcome back!</h2>
+                            <h2>Nice having you here!</h2>
                             <p>sign up to continue</p>
                             <form method="POST" action="{{ route('register') }}">
                                 @csrf
