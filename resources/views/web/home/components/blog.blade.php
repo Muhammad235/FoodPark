@@ -7,7 +7,7 @@
                         <h4>news & blogs</h4>
                         <h2>our latest foods blog</h2>
                         <span>
-                            <img src="images/heading_shapes.png" alt="shapes" class="img-fluid w-100">
+                            <img src="{{asset('web/images/heading_shapes.png')}}" alt="shapes" class="img-fluid w-100">
                         </span>
                     </div>
                 </div>
@@ -16,7 +16,7 @@
                 <div class="col-xl-4 col-sm-6 col-lg-4 wow fadeInUp" data-wow-duration="1s">
                     <div class="fp__single_blog">
                         <a href="#" class="fp__single_blog_img">
-                            <img src="images/menu2_img_1.jpg" alt="blog" class="img-fluid w-100">
+                            <img src="{{asset('web/images/menu2_img_1.jpg')}}" alt="blog" class="img-fluid w-100">
                         </a>
                         <div class="fp__single_blog_text">
                             <a class="category" href="#">chicken</a>
@@ -32,7 +32,7 @@
                 <div class="col-xl-4 col-sm-6 col-lg-4 wow fadeInUp" data-wow-duration="1s">
                     <div class="fp__single_blog">
                         <a href="#" class="fp__single_blog_img">
-                            <img src="images/menu2_img_2.jpg" alt="blog" class="img-fluid w-100">
+                            <img src="{{asset('web/images/menu2_img_2.jpg')}}" alt="blog" class="img-fluid w-100">
                         </a>
                         <div class="fp__single_blog_text">
                             <a class="category" href="#">kabab</a>
@@ -49,7 +49,7 @@
                 <div class="col-xl-4 col-sm-6 col-lg-4 wow fadeInUp" data-wow-duration="1s">
                     <div class="fp__single_blog">
                         <a href="#" class="fp__single_blog_img">
-                            <img src="images/menu2_img_3.jpg" alt="blog" class="img-fluid w-100">
+                            <img src="{{asset('web/images/menu2_img_3.jpg')}}" alt="blog" class="img-fluid w-100">
                         </a>
                         <div class="fp__single_blog_text">
                             <a class="category" href="#">grill</a>

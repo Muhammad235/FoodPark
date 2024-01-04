@@ -1,5 +1,3 @@
-
-
 <section class="fp__banner" style="background: url({{ asset('web/images/banner_bg.jpg') }});">
     <div class="fp__banner_overlay">
         <div class="row banner_slider">

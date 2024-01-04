@@ -5,7 +5,7 @@
                 <div class="col-lg-4 col-sm-8 col-md-6">
                     <div class="fp__footer_content">
                         <a class="footer_logo" href="index.html">
-                            <img src="images/footer_logo.png" alt="FoodPark" class="img-fluid w-100">
+                            <img src="{{asset('web/images/footer_logo.png')}}" alt="FoodPark" class="img-fluid w-100">
                         </a>
                         <span>There are many variations of Lorem Ipsum available, but the majority have
                             suffered.</span>
@@ -13,8 +13,8 @@
                             Heights, 11372, NY, United States</p>
                         <a class="info" href="callto:1234567890123"><i class="fas fa-phone-alt"></i>
                             +1347-430-9510</a>
-                        <a class="info" href="mailto:websolutionus1@gmail.com"><i class="fas fa-envelope"></i>
-                            websolutionus1@gmail.com</a>
+                        <a class="info" href="mailto:info@foodpark.com"><i class="fas fa-envelope"></i>
+                            info@foodpark.com</a>
                     </div>
                 </div>
                 <div class="col-lg-2 col-sm-4 col-md-6">

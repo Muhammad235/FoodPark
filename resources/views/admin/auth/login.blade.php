@@ -1,6 +1,5 @@
 {{-- Include Meta Tags --}}
 @include('admin.partials.__meta-tags')
-
 <body>
   <div id="app">
     <section class="section">

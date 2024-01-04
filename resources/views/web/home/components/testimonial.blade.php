@@ -6,7 +6,7 @@
                     <h4>testimonial</h4>
                     <h2>our customer feedbacks</h2>
                     <span>
-                        <img src="images/heading_shapes.png" alt="shapes" class="img-fluid w-100">
+                        <img src="{{asset('web/images/heading_shapes.png')}}" alt="shapes" class="img-fluid w-100">
                     </span>
                     <p>Objectively pontificate quality models before intuitive information. Dramatically
                         recaptiualize multifunctional materials.</p>
@@ -19,7 +19,7 @@
                 <div class="fp__single_testimonial">
                     <div class="fp__testimonial_header d-flex flex-wrap align-items-center">
                         <div class="img">
-                            <img src="images/comment_img_1.png" alt="clients" class="img-fluid w-100">
+                            <img src="{{asset('web/images/comment_img_1.png')}}" alt="clients" class="img-fluid w-100">
                         </div>
                         <div class="text">
                             <h4>isita islam</h4>
@@ -45,7 +45,7 @@
                 <div class="fp__single_testimonial">
                     <div class="fp__testimonial_header d-flex flex-wrap align-items-center">
                         <div class="img">
-                            <img src="images/comment_img_2.png" alt="clients" class="img-fluid w-100">
+                            <img src="{{asset('web/images/comment_img_2.png')}}" alt="clients" class="img-fluid w-100">
                         </div>
                         <div class="text">
                             <h4>sumon mahmud</h4>
@@ -71,7 +71,7 @@
                 <div class="fp__single_testimonial">
                     <div class="fp__testimonial_header d-flex flex-wrap align-items-center">
                         <div class="img">
-                            <img src="images/client_img_1.jpg" alt="clients" class="img-fluid w-100">
+                            <img src="{{asset('web/images/client_img_1.jpg')}}" alt="clients" class="img-fluid w-100">
                         </div>
                         <div class="text">
                             <h4>israt jahan</h4>
@@ -97,7 +97,7 @@
                 <div class="fp__single_testimonial">
                     <div class="fp__testimonial_header d-flex flex-wrap align-items-center">
                         <div class="img">
-                            <img src="images/client_img_3.jpg" alt="clients" class="img-fluid w-100">
+                            <img src="{{asset('web/images/client_img_3.jpg')}}" alt="clients" class="img-fluid w-100">
                         </div>
                         <div class="text">
                             <h4>payel sarkar</h4>
