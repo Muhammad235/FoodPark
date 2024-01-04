@@ -9,11 +9,11 @@
 
 
 // {{-- Set csrf at ajax header --}}
-$.ajaxSetup({
-    headers: {
-      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    }
-});
+// $.ajaxSetup({
+//     headers: {
+//       'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+//     }
+// });
 
 
 $(document).ready(function () {
@@ -34,6 +34,9 @@ $(document).ready(function () {
                 $.ajax({
                     method: 'DELETE',
                     url: route,
+                    data: {
+                        '_token': $('meta[name="csrf-token"]').attr('content')
+                    },
                     success: function(response){
                         // console.log(response);
                         if (response.status = 'success') {
@@ -43,7 +46,10 @@ $(document).ready(function () {
                                 icon: "success",
                             });
 
-                            $('#slider-table').DataTable().draw();
+                            //render the table, this time the table will be updated after the delete
+                            // $('#slider-table').DataTable().draw();
+
+                            window.location.reload();
                             
                         }else if(response.status = 'error'){
                             Swal.fire({
