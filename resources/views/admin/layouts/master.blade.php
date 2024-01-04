@@ -36,7 +36,7 @@
   {{-- <script src="{{ asset('admin/assets/modules/moment.min.js') }}"></script> --}}
   <script src="{{ asset('admin/assets/js/stisla.js') }}"></script>
   <script src="//cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
-  
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <!-- JS Libraies -->
   {{-- <script src="{{ asset('admin/assets/modules/simple-weather/jquery.simpleWeather.min.js') }}"></script> --}}
   {{-- <script src="{{ asset('admin/assets/modules/chart.min.js') }}"></script>
@@ -51,9 +51,10 @@
   <script src="{{ asset('admin/assets/js/page/upload-preview.js') }}"></script>
 
   
-  <!-- Template JS File -->
+  <!-- Custom JS File -->
   <script src="{{ asset('admin/assets/js/scripts.js') }}"></script>
   <script src="{{ asset('admin/assets/js/custom.js') }}"></script>
+
 
   @stack('scripts')
 </body>

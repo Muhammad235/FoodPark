@@ -10,8 +10,10 @@
          
         </div>
         <div class="card-body">
-           <form enctype="multipart/form-data" action="" method="POST">
+           <form enctype="multipart/form-data" action="{{ route('admin.slider.update', $slider->id) }}" method="POST">
             @csrf
+            @method('PUT')
+            {{ route('admin.slider.update', $slider->id) }}
             <div class="form-group">
             <label>Image</label>
                 <div id="image-preview" class="image-preview">

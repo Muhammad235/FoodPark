@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\Web\UpdateSliderRequest;
 use App\Models\Slider;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Traits\FileUploadTrait;
 use App\DataTables\SliderDataTable;
@@ -32,7 +34,7 @@ class SliderController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreSliderRequest $request)
+    public function store(StoreSliderRequest $request) : RedirectResponse
     {
 
         $data = $request->validated();
@@ -63,15 +65,29 @@ class SliderController extends Controller
     public function edit(string $id) : View
     {
         $slider = Slider::findOrfail($id);
+            
         return view('admin.slider.edit', compact('slider'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateSliderRequest $request, string $id) : RedirectResponse
     {
+        $data = $request->validated();
+
+        $slider = Slider::findOrfail($id);
+
+        //Upload the image and get file path
+        $imagePath = $this->uploadImage($request, 'image', '/web/images');
+
+        $data['image'] = isset($imagePath) ? $imagePath : $slider->image;
+
+        $slider->update($data);
         
+        toastr()->success("Updated successfully");
+
+        return redirect()->back();
     }
 
     /**
@@ -79,6 +95,15 @@ class SliderController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        try {
+            $slider = Slider::findOrfail($id);
+            $slider->delete();
+
+            return response()->json(['status' => 'success', 'message' => 'Deleted successfully']);
+
+        } catch (\Exception $e) {
+            return response()->json(['status' => 'error', 'message' => $e->getMessage()]);
+        }
+
     }
 }

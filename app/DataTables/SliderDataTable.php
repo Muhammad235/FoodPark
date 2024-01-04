@@ -24,13 +24,12 @@ class SliderDataTable extends DataTable
         return (new EloquentDataTable($query))
             ->addColumn('action', function($query) {
                 $edit = "<a href='".route('admin.slider.edit', $query->id)."' class='btn btn-primary'>Edit</a>";
-                $delete = "<a href='".route('admin.slider.destroy', $query->id)."' class='btn btn-danger ml-2'>Delete</a>";
+                $delete = "<a href='". route('admin.slider.destroy', $query->id) ."' class='btn btn-danger ml-2 delete-item'>Delete</a</form>";
 
                 return $edit.$delete;
             })
             ->setRowId('id');
     }
-
     /**
      * Get the query source of dataTable.
      */
