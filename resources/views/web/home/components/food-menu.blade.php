@@ -6,7 +6,7 @@
                     <h4>food Menu</h4>
                     <h2>Our Popular Delicious Foods</h2>
                     <span>
-                        <img src="images/heading_shapes.png" alt="shapes" class="img-fluid w-100">
+                        <img src="{{ asset('web/images/heading_shapes.png') }}" alt="shapes" class="img-fluid w-100">
                     </span>
                     <p>Objectively pontificate quality models before intuitive information. Dramatically
                         recaptiualize multifunctional materials.</p>
@@ -30,7 +30,7 @@
             <div class="col-xl-3 col-sm-6 col-lg-4 burger pizza wow fadeInUp" data-wow-duration="1s">
                 <div class="fp__menu_item">
                     <div class="fp__menu_item_img">
-                        <img src="images/menu2_img_1.jpg" alt="menu" class="img-fluid w-100">
+                        <img src="{{ asset('web/images/menu2_img_1.jpg') }}" alt="menu" class="img-fluid w-100">
                         <a class="category" href="#">Biryani</a>
                     </div>
                     <div class="fp__menu_item_text">
@@ -56,7 +56,7 @@
             <div class="col-xl-3 col-sm-6 col-lg-4  chicken dresserts wow fadeInUp" data-wow-duration="1s">
                 <div class="fp__menu_item">
                     <div class="fp__menu_item_img">
-                        <img src="images/menu2_img_2.jpg" alt="menu" class="img-fluid w-100">
+                        <img src="{{ asset('web/images/menu2_img_2.jpg') }}" alt="menu" class="img-fluid w-100">
                         <a class="category" href="#">chicken</a>
                     </div>
                     <div class="fp__menu_item_text">
@@ -82,7 +82,7 @@
             <div class="col-xl-3 col-sm-6 col-lg-4  chicken dresserts wow fadeInUp" data-wow-duration="1s">
                 <div class="fp__menu_item">
                     <div class="fp__menu_item_img">
-                        <img src="images/menu2_img_3.jpg" alt="menu" class="img-fluid w-100">
+                        <img src="{{ asset('web/images/menu2_img_3.jpg') }}" alt="menu" class="img-fluid w-100">
                         <a class="category" href="#">grill</a>
                     </div>
                     <div class="fp__menu_item_text">
@@ -108,7 +108,7 @@
             <div class="col-xl-3 col-sm-6 col-lg-4  burger pizza wow fadeInUp" data-wow-duration="1s">
                 <div class="fp__menu_item">
                     <div class="fp__menu_item_img">
-                        <img src="images/menu2_img_4.jpg" alt="menu" class="img-fluid w-100">
+                        <img src="{{ asset('web/images/menu2_img_4.jpg') }}" alt="menu" class="img-fluid w-100">
                         <a class="category" href="#">chicken</a>
                     </div>
                     <div class="fp__menu_item_text">
@@ -134,7 +134,7 @@
             <div class="col-xl-3 col-sm-6 col-lg-4  chicken dresserts wow fadeInUp" data-wow-duration="1s">
                 <div class="fp__menu_item">
                     <div class="fp__menu_item_img">
-                        <img src="images/menu2_img_5.jpg" alt="menu" class="img-fluid w-100">
+                        <img src="{{ asset('web/images/menu2_img_5.jpg') }}" alt="menu" class="img-fluid w-100">
                         <a class="category" href="#">chicken</a>
                     </div>
                     <div class="fp__menu_item_text">
@@ -160,7 +160,7 @@
             <div class="col-xl-3 col-sm-6 col-lg-4  burger pizza wow fadeInUp" data-wow-duration="1s">
                 <div class="fp__menu_item">
                     <div class="fp__menu_item_img">
-                        <img src="images/menu2_img_6.jpg" alt="menu" class="img-fluid w-100">
+                        <img src="{{ asset('web/images/menu2_img_6.jpg') }}" alt="menu" class="img-fluid w-100">
                         <a class="category" href="#">Biryani</a>
                     </div>
                     <div class="fp__menu_item_text">
@@ -186,7 +186,7 @@
             <div class="col-xl-3 col-sm-6 col-lg-4  chicken dresserts wow fadeInUp" data-wow-duration="1s">
                 <div class="fp__menu_item">
                     <div class="fp__menu_item_img">
-                        <img src="images/menu2_img_7.jpg" alt="menu" class="img-fluid w-100">
+                        <img src="{{ asset('web/images/menu2_img_7.jpg') }}" alt="menu" class="img-fluid w-100">
                         <a class="category" href="#">grill</a>
                     </div>
                     <div class="fp__menu_item_text">
@@ -212,7 +212,7 @@
             <div class="col-xl-3 col-sm-6 col-lg-4  burger pizza wow fadeInUp" data-wow-duration="1s">
                 <div class="fp__menu_item">
                     <div class="fp__menu_item_img">
-                        <img src="images/menu2_img_8.jpg" alt="menu" class="img-fluid w-100">
+                        <img src="{{ asset('web/images/menu2_img_8.jpg') }}" alt="menu" class="img-fluid w-100">
                         <a class="category" href="#">chicken</a>
                     </div>
                     <div class="fp__menu_item_text">

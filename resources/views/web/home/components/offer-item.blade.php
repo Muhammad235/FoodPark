@@ -6,7 +6,7 @@
                     <h4>daily offer</h4>
                     <h2>up to 75% off for this day</h2>
                     <span>
-                        <img src="images/heading_shapes.png" alt="shapes" class="img-fluid w-100">
+                        <img src="{{ asset('web/images/heading_shapes.png')}}" alt="shapes" class="img-fluid w-100">
                     </span>
                     <p>Objectively pontificate quality models before intuitive information. Dramatically
                         recaptiualize multifunctional materials.</p>
@@ -18,7 +18,7 @@
             <div class="col-xl-4">
                 <div class="fp__offer_item_single">
                     <div class="img">
-                        <img src="images/slider_img_1.png" alt="offer" class="img-fluid w-100">
+                        <img src="{{ asset('web/images/slider_img_1.png') }}" alt="offer" class="img-fluid w-100">
                     </div>
                     <div class="text">
                         <span>30% off</span>
@@ -36,7 +36,7 @@
             <div class="col-xl-4">
                 <div class="fp__offer_item_single">
                     <div class="img">
-                        <img src="images/slider_img_2.png" alt="offer" class="img-fluid w-100">
+                        <img src="{{ asset('web/images/slider_img_2.png') }}" alt="offer" class="img-fluid w-100">
                     </div>
                     <div class="text">
                         <span>40% off</span>
@@ -54,7 +54,7 @@
             <div class="col-xl-4">
                 <div class="fp__offer_item_single">
                     <div class="img">
-                        <img src="images/slider_img_3.png" alt="offer" class="img-fluid w-100">
+                        <img src="{{ asset('web/images/slider_img_3.png') }}" alt="offer" class="img-fluid w-100">
                     </div>
                     <div class="text">
 
@@ -73,7 +73,7 @@
             <div class="col-xl-4">
                 <div class="fp__offer_item_single">
                     <div class="img">
-                        <img src="images/slider_img_2.png" alt="offer" class="img-fluid w-100">
+                        <img src="web/images/slider_img_2.png" alt="offer" class="img-fluid w-100">
                     </div>
                     <div class="text">
                         <span>45% off</span>

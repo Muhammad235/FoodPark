@@ -42,7 +42,7 @@ $(document).ready(function () {
                         if (response.status = 'success') {
                             Swal.fire({
                                 title: "Deleted!",
-                                text: "Your file has been deleted.",
+                                text: "Slider has been deleted.",
                                 icon: "success",
                             });
 
@@ -50,14 +50,15 @@ $(document).ready(function () {
                             // $('#slider-table').DataTable().draw();
 
                             window.location.reload();
-                            
+
                         }else if(response.status = 'error'){
                             Swal.fire({
                                 title: "Errror!",
-                                text: "Your file has been deleted.",
-                                icon: "success",
+                                text: "Unable to delete slider.",
+                                icon: "error",
                             });
                         }
+                        
                     },
                     error: function(error){
                         console.log(error);

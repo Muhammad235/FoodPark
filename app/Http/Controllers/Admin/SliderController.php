@@ -46,7 +46,7 @@ class SliderController extends Controller
 
         Slider::create($data);
 
-        toastr()->success("Updated successfully");
+        toastr()->success("Created successfully");
             
         return redirect()->back();
     }

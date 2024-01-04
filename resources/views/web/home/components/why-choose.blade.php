@@ -6,7 +6,7 @@
                     <h4>why choose us</h4>
                     <h2>why choose us</h2>
                     <span>
-                        <img src="images/heading_shapes.png" alt="shapes" class="img-fluid w-100">
+                        <img src="{{ asset('web/images/heading_shapes.png')}}" alt="shapes" class="img-fluid w-100">
                     </span>
                     <p>Objectively pontificate quality models before intuitive information. Dramatically
                         recaptiualize multifunctional materials.</p>
