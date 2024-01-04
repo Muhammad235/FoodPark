@@ -48,8 +48,8 @@
             <div class="form-group">
                 <label>Status</label>
                 <select type='text' class='form-control' name='status'>
-                    <option value="1">Yes</option>
-                    <option value="0">No</option>
+                    <option value="1">Active</option>
+                    <option value="0">Inactive</option>
                 </select>
             </div>
 

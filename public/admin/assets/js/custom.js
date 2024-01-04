@@ -42,6 +42,9 @@ $(document).ready(function () {
                                 text: "Your file has been deleted.",
                                 icon: "success",
                             });
+
+                            $('#slider-table').DataTable().draw();
+                            
                         }else if(response.status = 'error'){
                             Swal.fire({
                                 title: "Errror!",
