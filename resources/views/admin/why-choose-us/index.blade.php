@@ -14,19 +14,23 @@
               <h4>Why Choose Us Section Titles</h4>
             </div>
             <div class="accordion-body collapse" id="panel-body-3" data-parent="#accordion">
-               <div class="form-group">
-                  <label for="">Top Title</label>
-                  <input type='text' class='form-control' placeholder='' name='' value=''>
-               </div>
-               <div class="form-group">
-                  <label for="">Main Title</label>
-                  <input type='text' class='form-control' placeholder='' name='' value=''>
-               </div>
-               <div class="form-group">
-                  <label for="">Sub Title</label>
-                  <input type='text' class='form-control' placeholder='' name='' value=''>
-               </div>
-               <button class="btn btn-primary">submit</button>
+              <form action="{{ route('admin.why-choose-title.update') }}" method="POST">
+                @csrf
+                @method('PUT')
+                  <div class="form-group">
+                      <label for="">Top Title</label>
+                      <input type='text' class='form-control' placeholder='' name='why_choose_top_title' value='{{ @$titles['why_choose_top_title'] }}'>
+                  </div>
+                  <div class="form-group">
+                      <label for="">Main Title</label>
+                      <input type='text' class='form-control' placeholder='' name='why_choose_main_title' value='{{ @$titles['why_choose_main_title'] }}'>
+                  </div>
+                  <div class="form-group">
+                      <label for="">Sub Title</label>
+                      <input type='text' class='form-control' placeholder='' name='why_choose_sub_title' value='{{ @$titles['why_choose_sub_title'] }}'>
+                  </div>
+                  <button class="btn btn-primary">submit</button>
+              </form>
             </div>
           </div>
         </div>

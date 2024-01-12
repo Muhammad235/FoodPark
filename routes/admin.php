@@ -26,6 +26,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'r
     Route::resource('slider', SliderController::class);
 
     // Why Choose Us Routes
+    Route::put('why-choose-title-update', [WhyChooseUsController::class, 'update'])->name('why-choose-title.update');
     Route::resource('why-choose-us', WhyChooseUsController::class);
 
 });
