@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('why_choose_us', function (Blueprint $table) {
             $table->id();
+            $table->string('icon');
+            $table->string('title');
+            $table->text('shot_description');
+            $table->boolean('status')->default(1);
             $table->timestamps();
         });
     }
