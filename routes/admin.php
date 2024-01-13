@@ -1,11 +1,12 @@
 <?php
 
-use App\Http\Controllers\Admin\ProfileController;
-use App\Http\Controllers\Admin\SliderController;
-use App\Http\Controllers\Admin\WhyChooseUsController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\SliderController;
+use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\AdminAuthController;
+use App\Http\Controllers\Admin\WhyChooseUsController;
 use App\Http\Controllers\Admin\AdminDashboardController;
+use App\Http\Controllers\Admin\WhyChooseUsTitleController;
 
 
 // Admin login Route
@@ -26,7 +27,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'r
     Route::resource('slider', SliderController::class);
 
     // Why Choose Us Routes
-    Route::put('why-choose-title-update', [WhyChooseUsController::class, 'update'])->name('why-choose-title.update');
+    Route::put('why-choose-title-update', [WhyChooseUsTitleController::class, 'update'])->name('why-choose-title.update');
     Route::resource('why-choose-us', WhyChooseUsController::class);
 
 });

@@ -4,8 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\DataTables\WhyChooseUsDataTable;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\WhyChooseUsCreateRequest;
 use App\Models\SectionTitle;
+use App\Models\WhyChooseUs;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class WhyChooseUsController extends Controller
 {
@@ -22,17 +25,20 @@ class WhyChooseUsController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create() : View
     {
-        //
+        return view('admin.why-choose-us.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(WhyChooseUsCreateRequest $request)
     {
-        //
+        WhyChooseUs::create($request->validated());
+        toastr()->success("Updated successfully");
+
+        return to_route('admin.why-choose-us.index');
     }
 
     /**
@@ -56,32 +62,7 @@ class WhyChooseUsController extends Controller
      */
     public function update(Request $request)
     {
-
-        $request->validate([
-            'why_choose_top_title' => ['max:100'],
-            'why_choose_main_title' => ['max:100'],
-            'why_choose_sub_title' => ['max:150'],
-        ]);
-
-        SectionTitle::updateOrCreate(
-            ['key' => 'why_choose_top_title'],
-            ['value' => $request->why_choose_top_title],
-        );
-
-        SectionTitle::updateOrCreate(
-            ['key' => 'why_choose_main_title'],
-            ['value' => $request->why_choose_main_title],
-        );
-
-
-        SectionTitle::updateOrCreate(
-            ['key' => 'why_choose_sub_title'],
-            ['value' => $request->why_choose_sub_title],
-        );
-
-        toastr()->success("Updated successfully");
-            
-        return redirect()->back();
+        
     }
 
     /**

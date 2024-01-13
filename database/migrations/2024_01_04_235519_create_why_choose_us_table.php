@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('icon');
             $table->string('title');
-            $table->text('shot_description');
+            $table->text('short_description');
             $table->boolean('status')->default(1);
             $table->timestamps();
         });
