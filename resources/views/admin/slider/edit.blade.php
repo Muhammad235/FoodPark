@@ -13,6 +13,7 @@
            <form enctype="multipart/form-data" action="{{ route('admin.slider.update', $slider->id) }}" method="POST">
             @csrf
             @method('PUT')
+            
             <div class="form-group">
             <label>Image</label>
                 <div id="image-preview" class="image-preview">

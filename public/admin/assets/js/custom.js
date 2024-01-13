@@ -39,10 +39,10 @@ $(document).ready(function () {
                     },
                     success: function(response){
                         // console.log(response);
-                        if (response.status = 'success') {
+                        if (response.status == 'success') {
                             Swal.fire({
                                 title: "Deleted!",
-                                text: "Slider has been deleted.",
+                                text: response.message,
                                 icon: "success",
                             });
 
@@ -51,10 +51,10 @@ $(document).ready(function () {
 
                             window.location.reload();
 
-                        }else if(response.status = 'error'){
+                        }else if(response.status == 'error'){
                             Swal.fire({
                                 title: "Errror!",
-                                text: "Unable to delete slider.",
+                                text: "Unable to complete the action",
                                 icon: "error",
                             });
                         }

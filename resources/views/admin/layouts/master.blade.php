@@ -46,6 +46,7 @@
   <script src="{{ asset('admin/assets/modules/chocolat/dist/js/jquery.chocolat.min.js') }}"></script> --}}
 
   <script src="{{ asset('admin/assets/modules/upload-preview/assets/js/jquery.uploadPreview.min.js')}}"></script>
+  <script src="{{ asset('admin/assets/modules/bootstrap-iconpicker/js/bootstrap-iconpicker.bundle.min.js')}}"></script>
 
   <!-- Page Specific JS File -->
   <script src="{{ asset('admin/assets/js/page/upload-preview.js') }}"></script>
@@ -55,6 +56,7 @@
   <script src="{{ asset('admin/assets/js/scripts.js') }}"></script>
   <script src="{{ asset('admin/assets/js/custom.js') }}"></script>
 
+  
 
   @stack('scripts')
 </body>

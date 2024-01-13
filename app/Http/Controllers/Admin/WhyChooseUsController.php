@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\WhyChooseUsCreateRequest;
 use App\Models\SectionTitle;
 use App\Models\WhyChooseUs;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -33,8 +34,9 @@ class WhyChooseUsController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(WhyChooseUsCreateRequest $request)
+    public function store(WhyChooseUsCreateRequest $request) : RedirectResponse
     {
+
         WhyChooseUs::create($request->validated());
         toastr()->success("Updated successfully");
 
@@ -52,17 +54,24 @@ class WhyChooseUsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(string $id) : View
     {
-        //
+        $whyChooseUs = WhyChooseUs::findOrFail($id);
+        return view('admin.why-choose-us.edit', compact('whyChooseUs'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request)
+    public function update(WhyChooseUsCreateRequest $request, string $id) : RedirectResponse
     {
-        
+        $whyChooseUs = WhyChooseUs::findOrFail($id);
+
+        $whyChooseUs->update($request->validated());
+
+        toastr()->success("Updated successfully");
+
+        return to_route('admin.why-choose-us.index');
     }
 
     /**
@@ -70,6 +79,18 @@ class WhyChooseUsController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        try {
+            $whyChooseUs = WhyChooseUs::findOrFail($id);
+            $whyChooseUs->delete();
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Deleted Successfully',
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'status' => 'error',
+                'message' => $e->getMessage(),
+            ]);
+        }
     }
 }

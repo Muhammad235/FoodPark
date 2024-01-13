@@ -14,8 +14,8 @@
             @csrf
 
             <div class="form-group">
-                <label>Icon</label>
-                <input type='text' class='form-control' placeholder='Pick Icon' name='icon' value='fas fa-percent'>
+                <label>Select Icon</label> <br>
+                <button class="btn btn-primary" role="iconpicker" name="icon"></button>
             </div>
 
             <div class="form-group">
