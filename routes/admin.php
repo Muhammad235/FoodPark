@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\CategoryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\ProfileController;
@@ -29,5 +30,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'r
     // Why Choose Us Routes
     Route::put('why-choose-title-update', [WhyChooseUsTitleController::class, 'update'])->name('why-choose-title.update');
     Route::resource('why-choose-us', WhyChooseUsController::class);
+
+    // Product Category Routes
+    Route::resource('category', CategoryController::class);
 
 });
