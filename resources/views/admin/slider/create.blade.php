@@ -49,7 +49,7 @@
                 <label>Status</label>
                 <select type='text' class='form-control' name='status'>
                     <option value="1">Active</option>
-                    <option value="0">Inactive</option>
+                    <option value="0">InActive</option>
                 </select>
             </div>
 

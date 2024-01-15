@@ -48,7 +48,7 @@ class SliderController extends Controller
 
         toastr()->success("Created successfully");
             
-        return redirect()->back();
+        return to_route('admin.slider.index');
     }
 
     /**
@@ -103,7 +103,7 @@ class SliderController extends Controller
             return response()->json(['status' => 'success', 'message' => 'Deleted successfully']);
 
         } catch (\Exception $e) {
-            return response()->json(['status' => 'error', 'message' => $e->getMessage()]);
+            return response()->json(['status' => 'error', 'message' => 'Unable to complete this action']);
         }
 
     }
