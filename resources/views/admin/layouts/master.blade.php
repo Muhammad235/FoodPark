@@ -36,18 +36,18 @@
   {{-- <script src="{{ asset('admin/assets/modules/moment.min.js') }}"></script> --}}
   <script src="{{ asset('admin/assets/js/stisla.js') }}"></script>
   <script src="//cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+  <script src="{{ asset('admin/assets/modules/select2/dist/js/select2.full.min.js') }}"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <!-- JS Libraies -->
   {{-- <script src="{{ asset('admin/assets/modules/simple-weather/jquery.simpleWeather.min.js') }}"></script> --}}
   {{-- <script src="{{ asset('admin/assets/modules/chart.min.js') }}"></script>
   <script src="{{ asset('admin/assets/modules/jqvmap/dist/jquery.vmap.min.js') }}"></script>
   <script src="{{ asset('admin/assets/modules/jqvmap/dist/maps/jquery.vmap.world.js') }}"></script>
-  <script src="{{ asset('admin/assets/modules/summernote/summernote-bs4.js') }}"></script>
   <script src="{{ asset('admin/assets/modules/chocolat/dist/js/jquery.chocolat.min.js') }}"></script> --}}
 
   <script src="{{ asset('admin/assets/modules/upload-preview/assets/js/jquery.uploadPreview.min.js')}}"></script>
   <script src="{{ asset('admin/assets/modules/bootstrap-iconpicker/js/bootstrap-iconpicker.bundle.min.js')}}"></script>
-
+  <script src="{{ asset('admin/assets/modules/summernote/summernote-bs4.js') }}"></script>
   <!-- Page Specific JS File -->
   <script src="{{ asset('admin/assets/js/page/upload-preview.js') }}"></script>
 

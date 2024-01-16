@@ -1,9 +1,10 @@
 <?php
 
-use App\Http\Controllers\Admin\CategoryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\SliderController;
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\AdminAuthController;
 use App\Http\Controllers\Admin\WhyChooseUsController;
 use App\Http\Controllers\Admin\AdminDashboardController;
@@ -33,5 +34,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'r
 
     // Product Category Routes
     Route::resource('category', CategoryController::class);
+
+    // Product Routes
+    Route::resource('product', ProductController::class);
+
+    // Product Gallery Routes
+    Route::resource('product-gallery', ProductController::class);
 
 });

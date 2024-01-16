@@ -16,10 +16,6 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
 
         \App\Models\Slider::factory(3)->create();
 
@@ -28,6 +24,8 @@ class DatabaseSeeder extends Seeder
         $this->call(CategorySeeder::class);
 
         \App\Models\WhyChooseUs::factory(3)->create();
+        \App\Models\Product::factory(10)->create();
         
+
     }
 }

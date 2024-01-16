@@ -22,17 +22,20 @@ use App\Http\Controllers\Web\DashboardController;
 Route::get('/', [WebPageController::class, 'index']);
 
 
+/** Authenticated user routes **/
+// Route::get('product/{slug}', [WebPageController::class, ''])->name('product.show');
+
+
+/** Authenticated user routes **/
+// Route::get('load-product-modal/{product:id}', [WebPageController::class, '']);
+
+
+/** Authenticated user routes **/
 Route::group(['middleware' => 'auth'], function() {
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::put('profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::put('profile/password', [PasswordController::class, 'update'])->name('password.update');
     Route::put('profile/avatar', [ProfileController::class, 'updateAvatar'])->name('profile.avatar.update');
 });
-
-// Route::middleware('auth')->group(function () {
-//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-// });
 
 require __DIR__.'/auth.php';
