@@ -102,8 +102,9 @@ class ProductController extends Controller
     public function destroy(string $id) : JsonResponse
     {
         try {
-            $category = Product::findOrfail($id);
-            $category->delete();
+            $product = Product::findOrfail($id);
+            $this->removeImage($product->thumb_image);
+            $product->delete();
 
             return response()->json(['status' => 'success', 'message' => 'Deleted successfully']);
 
