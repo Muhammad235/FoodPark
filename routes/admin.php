@@ -39,6 +39,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'r
     Route::resource('product', ProductController::class);
 
     // Product Gallery Routes
-    Route::resource('product-gallery', ProductController::class);
+    // Route::resource('product-gallery', ProductController::class);
 
 });
