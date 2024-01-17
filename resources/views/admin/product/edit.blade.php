@@ -6,11 +6,11 @@
     </div>
     <div class="card card-primary">
         <div class="card-header">
-          <h4>Edit Product</h4>
+          <h4>Update Product</h4>
          
         </div>
         <div class="card-body">
-           <form enctype="multipart/form-data" action="{{ route('admin.product.update')}}" method="POST">
+           <form enctype="multipart/form-data" action="{{ route('admin.product.update', $product->id)}}" method="POST">
             @csrf
             @method('PUT')
             <div class='form-group'>
@@ -23,17 +23,17 @@
 
             <div class="form-group">
                 <label>Product Name</label>
-                <input type='text' class='form-control' placeholder='Name' name='name' value='{{ old('name') }}'>
+                <input type='text' class='form-control' placeholder='Name' name='name' value='{{ $product->name }}'>
             </div>
 
             <div class="form-group">
                 <label>Price</label>
-                <input type='number' class='form-control' placeholder='Price' name='price' value='{{ old('price') }}'>
+                <input type='number' class='form-control' placeholder='Price' name='price' value='{{ $product->price }}'>
             </div>
 
             <div class="form-group">
                 <label>Offer Price</label>
-                <input type='number' class='form-control' placeholder='offer_price' name='offer_price' value='{{ old('offer_price') }}'>
+                <input type='number' class='form-control' placeholder='offer_price' name='offer_price' value='{{ $product->offer_price }}'>
             </div>
 
             <div class="form-group">
@@ -41,50 +41,50 @@
                 <select type='text' class='form-control select2' name='category_id'>
                     <option select>select</option>   
                     @foreach ($categories as $category)
-                        <option value='{{ $category->id }}'>{{ $category->name}}</option>   
+                        <option @selected($product->category_id === $category->id) value='{{ $category->id }}'>{{ $category->name}}</option>   
                     @endforeach
                 </select>
             </div>
 
             <div class="form-group">
                 <label>Sku</label>
-                <input type='text' class='form-control' placeholder='Sku' name='sku' value='{{ old('sku') }}'>
+                <input type='text' class='form-control' placeholder='Sku' name='sku' value='{{ $product->sku }}'>
             </div>
 
             <div class="form-group">
                 <label>Seo Title</label>
-                <input type='text' class='form-control' placeholder='Seo Title' name='seo_title' value='{{ old('seo_title') }}'>
+                <input type='text' class='form-control' placeholder='Seo Title' name='seo_title' value='{{ $product->seo_title }}'>
             </div>
 
             <div class="form-group">
                 <label>Seo Description</label>
-                <input type='text' class='form-control' placeholder='Seo Description' name='seo_description' value='{{ old('seo_description') }}'>
+                <input type='text' class='form-control' placeholder='Seo Description' name='seo_description' value='{{ $product->seo_description }}'>
             </div>
 
             <div class="form-group">
                 <label>Short Description</label>
-                <textarea class='form-control' placeholder='Short Description' name='short_description' >{{ old('short_description') }}</textarea>
+                <textarea class='form-control' placeholder='Short Description' name='short_description' >{!! $product->short_description !!}</textarea>
             </div>
 
             <div class="form-group">
                 <label>Long Description</label>
-                <textarea name='long_description' class='form-control summernote' placeholder='long Description' >{{ old('long_description') }}</textarea>
+                <textarea name='long_description' class='form-control summernote' placeholder='long Description' >{!! $product->long_description !!}</textarea>
             </div>
 
 
             <div class="form-group">
                 <label>Show at home</label>
                 <select type='text' class='form-control' name='show_at_home'>
-                    <option value="1">Yes</option>
-                    <option selected value="0">No</option>
+                    <option @selected($product->status == 1)  value="1">Yes</option>
+                    <option @selected($product->status == 0)  value="0">No</option>
                 </select>
             </div>
 
             <div class="form-group">
                 <label>Status</label>
                 <select type='text' class='form-control' name='status'>
-                    <option value="1">Active</option>
-                    <option value="0">InActive</option>
+                    <option @selected($product->status == 1) value="1">Active</option>
+                    <option @selected($product->status == 0)  value="0">InActive</option>
                 </select>
             </div>
 

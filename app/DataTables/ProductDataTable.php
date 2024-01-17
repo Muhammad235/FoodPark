@@ -24,9 +24,22 @@ class ProductDataTable extends DataTable
         return (new EloquentDataTable($query))
             ->addColumn('action', function($query){
                 $edit = "<a href='".route('admin.product.edit', $query->id)."' class='btn btn-primary'><i class='fas fa-edit'></i></a>";
-                $delete = "<a href='". route('admin.product.destroy', $query->id) ."' class='btn btn-danger ml-2 delete-item'><i class='fas fa-trash-alt'></i></a</form>";
+                $delete = "<a href='". route('admin.product.destroy', $query->id) ."' class='btn btn-danger mx-2 delete-item'><i class='fas fa-trash-alt'></i></a>";
 
-                return $edit.$delete;
+                $more = '<div class="btn-group dropleft">
+                <button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-cog"></i>
+                </button>
+                <div class="dropdown-menu dropleft" x-placement="left-start" style="position: absolute; transform: translate3d(-2px, 0px, 0px); top: 0px; left: 0px; will-change: transform;">
+                  <a class="dropdown-item" href="#">Action</a>
+                  <a class="dropdown-item" href="#">Another action</a>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#">Separated link</a>
+                </div>
+              </div>';
+
+                return $edit.$delete.$more;
             })
             ->addColumn('status', function($query){
                 $status = $query->status == 1 ? '<span class="badge badge-primary">Active</span>' : '<span class="badge badge-danger">InActive</span>';
@@ -39,7 +52,7 @@ class ProductDataTable extends DataTable
                 return $status;
             })->addColumn('thumb_image', function($query) {
                 
-                return "<img src='". asset($query->image) ."' width='60'>";
+                return "<img src='". asset($query->thumb_image) ."' alt='". asset($query->thumb_image) ."' width='60'>";
 
             })->addColumn('price', function($query){
 
@@ -89,16 +102,17 @@ class ProductDataTable extends DataTable
     {
         return [
             Column::make('id'),
-            Column::make('name'),
             Column::make('thumb_image'),
+            Column::make('name'),
             Column::make('short_description'),
-            Column::make('long_description'),
             Column::make('price'),
             Column::make('offer_price'),
+            Column::make('show_at_home'),
+            Column::make('status'),
             Column::computed('action')
             ->exportable(false)
             ->printable(false)
-            ->width(150)
+            ->width(160)
             ->addClass('text-center'),
         ];
     }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\Web\UpdateSliderRequest;
 use App\Models\Slider;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Traits\FileUploadTrait;
@@ -93,7 +94,7 @@ class SliderController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $id) : JsonResponse
     {
         try {
             $slider = Slider::findOrfail($id);

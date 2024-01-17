@@ -20,11 +20,15 @@ class ProductFactory extends Factory
         return [
             'name' => fake()->word(),
             'slug' => fake()->slug(),
-            'thumb_image' => 'test/image.png',
+
+            'thumb_image' => function() {
+                 $images = ['menu2_img_1.jpg', 'menu2_img_4.jpg', 'menu2_img_5.jpg'];
+                return 'web/images/'. fake()->randomElement($images);
+            },
             'category_id' => function(){
                 return Category::inRandomOrder()->first()->id;
             },
-            'short_description' => fake()->paragraph(),
+            'short_description' => fake()->paragraph(2),
             'long_description' => fake()->paragraph(),
             'price' => fake()->randomFloat(2, 10, 200),
             'offer_price' => fake()->randomFloat(2, 1, 100),

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\SectionTitle;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -11,7 +12,7 @@ class WhyChooseUsTitleController extends Controller
         /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request)
+    public function update(Request $request) : RedirectResponse
     {
 
         $request->validate([

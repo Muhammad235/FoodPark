@@ -19,7 +19,8 @@ class ProfileController extends Controller
         return view('admin.profile.index');
     }
 
-    function update(ProfileUpdateRequest $request) : RedirectResponse {
+    function update(ProfileUpdateRequest $request) : RedirectResponse 
+    {
         
         $user = Auth::user();
         

@@ -23,7 +23,7 @@ class ProductCreateRequest extends FormRequest
     {
         return [
 
-            'image' => ['required', 'max:3000'],
+            'image' => ['required', 'max:3000', 'image'],
             'name' => ['required',  'max:255'],
             'category_id' => ['required', 'numeric'],
             'short_description' => ['required', 'max:500'],
@@ -36,5 +36,10 @@ class ProductCreateRequest extends FormRequest
             'seo_description' => ['required', 'max:255'],
             'status' => ['required', 'boolean'],
         ];
+    }
+
+    private function isPostRequest()
+    {
+        return request()->isMethod('post') ? $this->isPostRequest() : 'sometimes';
     }
 }

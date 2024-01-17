@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\WhyChooseUsCreateRequest;
 use App\Models\SectionTitle;
 use App\Models\WhyChooseUs;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -77,7 +78,7 @@ class WhyChooseUsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $id) : JsonResponse
     {
         try {
             $whyChooseUs = WhyChooseUs::findOrFail($id);

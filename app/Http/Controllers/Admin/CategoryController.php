@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Category;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -65,7 +66,7 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(CategoryCreateRequest $request, string $id)
+    public function update(CategoryCreateRequest $request, string $id) : RedirectResponse
     {
         $category = Category::findOrFail($id);
         $category->update($request->validated());
@@ -77,7 +78,7 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $id) : JsonResponse
     {
         try {
             $category = Category::findOrfail($id);

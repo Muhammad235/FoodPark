@@ -11,11 +11,13 @@ use App\Http\Requests\Admin\PasswordUpdateRequest;
 
 class AdminAuthController extends Controller
 {
-    function index() : View {
+    function index() : View 
+    {
         return view('admin.auth.login');
     }
 
-    function update(PasswordUpdateRequest $request) : RedirectResponse {
+    function update(PasswordUpdateRequest $request) : RedirectResponse 
+    {
         
         $user = Auth::user();
 
