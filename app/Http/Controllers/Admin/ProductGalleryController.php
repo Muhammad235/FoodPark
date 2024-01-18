@@ -3,12 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Product;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Models\ProductGallery;
 use App\Traits\FileUploadTrait;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\RedirectResponse;
 
 class ProductGalleryController extends Controller
 {
@@ -17,12 +18,13 @@ class ProductGalleryController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(string $productId)
+    public function index(Product $product) : View
     {
-        return view('admin.product.gallery.index', compact('productId'));
+        $productGalleries = ProductGallery::where('product_id', $product->id)->get();
+        return view('admin.product.gallery.index', compact('product', 'productGalleries'));
     }
 
-    /**
+    /**s
      * Show the form for creating a new resource.
      */
     public function create() 
@@ -35,7 +37,6 @@ class ProductGalleryController extends Controller
      */
     public function store(Request $request) : RedirectResponse
     {
-        // dd($request->all());
 
         $request->validate([
             'image' => ['image', 'max:3000', 'required'],
@@ -44,21 +45,16 @@ class ProductGalleryController extends Controller
 
         $product = Product::find($request->product_id);
 
-        if($product){
-            $imagePath = $this->uploadImage($request, 'image', 'web/images');
+        $imagePath = $this->uploadImage($request, 'image', 'web/images');
 
-            ProductGallery::create([
+        ProductGallery::create([
                 'product_id' => $product->id,
                 'image' => $imagePath
-            ]);
+        ]);
     
-            toastr()->success("Created successfully");
-            return to_route('admin.product-gallery.index');
-        }else {
-            return to_route('admin.product-gallery.index');
+        toastr()->success("Created successfully");
 
-        }
-
+        return back();
 
     }
 
@@ -67,6 +63,7 @@ class ProductGalleryController extends Controller
      */
     public function show(string $id)
     {
+        
         //
     }
 
@@ -89,8 +86,17 @@ class ProductGalleryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $id) : JsonResponse
     {
-        //
+        try {
+            $ProductGallery = ProductGallery::findOrFail($id);
+            $this->removeImage($ProductGallery->image);
+            $ProductGallery->delete();
+
+            return response()->json(['status' => 'success', 'message' => 'Deleted successfully']);
+
+        } catch (\Exception $th) {
+            return response()->json(['status' => 'error', 'message' => 'Unable to complete this action']);
+        }
     }
 }

@@ -23,9 +23,9 @@ class ProductCreateRequest extends FormRequest
     {
         return [
 
-            'image' => ['required', 'max:3000', 'image'],
+            'image' => [$this->isPostRequest(), 'max:3000', 'image'],
             'name' => ['required',  'max:255'],
-            'category_id' => ['required', 'numeric'],
+            'category_id' => ['required', 'integer'],
             'short_description' => ['required', 'max:500'],
             'long_description' => ['required'],
             'price' => ['required', 'numeric'],
@@ -40,6 +40,15 @@ class ProductCreateRequest extends FormRequest
 
     private function isPostRequest()
     {
-        return request()->isMethod('post') ? $this->isPostRequest() : 'sometimes';
+        return request()->isMethod('post') ? 'required' : 'sometimes';
     }
+
+    public function messages(): array
+    {
+        return [
+            'category_id.required' => 'Select a category',
+            'category_id.integer' => 'Select a category',
+        ];
+    }
+        
 }
