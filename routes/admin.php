@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\ProductGalleryController;
+use App\Http\Controllers\Admin\ProductSizeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\ProductController;
@@ -42,5 +43,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'r
     // Product Gallery Routes
     Route::get('product-gallery/{product}', [ProductGalleryController::class, 'index'])->name('product-gallery.show-index');
     Route::resource('product-gallery', ProductGalleryController::class);
+
+    // Product Gallery Routes
+    Route::get('product-size/{product}', [ProductSizeController::class, 'index'])->name('product-size.show-index');
+    Route::resource('product-size', ProductSizeController::class);
 
 });

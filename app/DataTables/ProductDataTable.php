@@ -31,7 +31,8 @@ class ProductDataTable extends DataTable
                 <i class="fas fa-cog"></i>
                 </button>
                 <div class="dropdown-menu dropleft" x-placement="left-start" style="position: absolute; transform: translate3d(-2px, 0px, 0px); top: 0px; left: 0px; will-change: transform;">
-                  <a class="dropdown-item" href="'. route('admin.product-gallery.show-index', $query->id) .'">Product Gallery</a>
+                <a class="dropdown-item" href="'. route('admin.product-gallery.show-index', $query->id) .'">Product Gallery</a>
+                <a class="dropdown-item" href="'. route('admin.product-size.show-index', $query->id) .'">Product Size</a>
                 </div>
               </div>';
 
