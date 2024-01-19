@@ -38,7 +38,7 @@ class ProductCreateRequest extends FormRequest
         ];
     }
 
-    private function isPostRequest()
+    private function isPostRequest() : string
     {
         return request()->isMethod('post') ? 'required' : 'sometimes';
     }

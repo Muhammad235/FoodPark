@@ -2,64 +2,51 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\ProductOption;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\RedirectResponse;
 
 class ProductOptionController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request) : RedirectResponse
     {
-        //
+        $request->validate([
+            'product_id' => ['required'],
+            'name' => ['required', 'max:255'],
+            'price' => ['required', 'numeric'],
+        ], [
+            'name.required' => 'Product option name is required',
+            'name.max' => 'Product option max length is 255',
+            'price.required' => 'Product option price is required',
+            'price.numeric' => 'Product option price must be a number',
+        ]);
+
+        ProductOption::create($request->only('product_id', 'name', 'price'));
+
+        toastr()->success("Created successfully");
+
+        return back();
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
     {
-        //
+        try {
+            $ProductOption = ProductOption::findOrFail($id);
+            $ProductOption->delete();
+
+            return response()->json(['status' => 'success', 'message' => 'Deleted successfully']);
+
+        } catch (\Exception $th) {
+            return response()->json(['status' => 'error', 'message' => 'Unable to complete this action']);
+        }
     }
 }
