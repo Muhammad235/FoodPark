@@ -1,6 +1,7 @@
 @extends('web.layouts.master')
 @section('content')
 
+@dump($relatedProducts)
     <!--=============================
         BREADCRUMB START
     ==============================-->
@@ -130,7 +131,6 @@
                                 aria-labelledby="pills-home-tab" tabindex="0">
                                 <div class="menu_det_description">
                                     <p>{!! $product->long_description !!}</p>
-
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="pills-contact" role="tabpanel"

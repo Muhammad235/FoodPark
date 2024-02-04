@@ -35,7 +35,20 @@ class WebPageController extends Controller
     }
 
     public function show(Product $product) : View 
-    {      
-        return view('web.pages.menu_details', compact('product'));
+    {   
+
+        // Retrieve related products from the same category as $product, excluding $product itself.
+
+        // $relatedProducts = $product->category->product()
+        //                     ->where('category_id', $product->category_id)
+        //                     ->where('id', '!=', $product->id)
+        //                     ->get();
+
+        $relatedProducts = Product::where('category_id', $product->category_id)
+                            ->where('id', '!=', $product->id)
+                            ->get();
+
+        return view('web.pages.menu_details', compact('product', 'relatedProducts'));
     }
+
 }
