@@ -19,11 +19,10 @@ use App\Http\Controllers\Web\DashboardController;
 |
 */
 
+
+/** WebPage routes user routes **/
 Route::get('/', [WebPageController::class, 'index']);
-
-
-/** Authenticated user routes **/
-// Route::get('product/{slug}', [WebPageController::class, ''])->name('product.show');
+Route::get('product/{product:slug}', [WebPageController::class, 'show'])->name('product.show');
 
 
 /** Authenticated user routes **/
