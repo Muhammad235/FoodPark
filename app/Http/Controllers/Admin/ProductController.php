@@ -87,7 +87,6 @@ class ProductController extends Controller
         $imagePath = $this->uploadImage($request, 'image', '/web/images');
 
         $data['thumb_image'] = isset($imagePath) ? $imagePath : $product->thumb_image;
-        $data['slug'] = generateUniqueSlug('Product', $request->name);
 
         $product->update($data);
         
