@@ -3702,13 +3702,13 @@ footer {
 
 .details_size,
 .details_extra_item,
-.details_quentity {
+.details_quantity {
     margin-bottom: 30px;
 }
 
 .details_size h5,
 .details_extra_item h5,
-.details_quentity h5 {
+.details_quantity h5 {
     text-transform: capitalize;
     font-size: 18px;
     font-weight: 600;
@@ -3751,13 +3751,13 @@ footer {
     max-width: 25%;
 }
 
-.quentity_btn {
+.quantity_btn {
     display: flex;
     align-items: center;
     justify-content: start;
 }
 
-.quentity_btn button {
+.quantity_btn button {
     width: 35px;
     height: 35px;
     font-size: 15px;
@@ -3770,7 +3770,7 @@ footer {
     -o-border-radius: 3px;
 }
 
-.quentity_btn input {
+.quantity_btn input {
     width: 60px;
     text-align: center;
     height: 35px;
@@ -3786,7 +3786,7 @@ footer {
     -o-border-radius: 3px;
 }
 
-.quentity_btn_area h3 {
+.quantity_btn_area h3 {
     font-size: 20px;
     font-weight: 600;
     margin-left: 10px;

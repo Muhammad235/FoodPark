@@ -35,8 +35,7 @@ class WebPageController extends Controller
     }
 
     public function show(Product $product) : View 
-    {
-        
+    {      
         return view('web.pages.menu_details', compact('product'));
     }
 }

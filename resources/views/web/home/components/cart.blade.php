@@ -59,10 +59,10 @@
                             </div>
                         </div>
 
-                        <div class="details_quentity">
-                            <h5>select quentity</h5>
-                            <div class="quentity_btn_area d-flex flex-wrapa align-items-center">
-                                <div class="quentity_btn">
+                        <div class="details_quantity">
+                            <h5>select quantity</h5>
+                            <div class="quantity_btn_area d-flex flex-wrapa align-items-center">
+                                <div class="quantity_btn">
                                     <button class="btn btn-danger"><i class="fal fa-minus"></i></button>
                                     <input type="text" placeholder="1">
                                     <button class="btn btn-success"><i class="fal fa-plus"></i></button>

@@ -1,6 +1,5 @@
 @extends('web.layouts.master')
 @section('content')
-{{-- @dd($product) --}}
 
     <!--=============================
         BREADCRUMB START
@@ -33,7 +32,7 @@
                         <div class="exzoom_img_box fp__menu_details_images">
                             <ul class='exzoom_img_ul'>
                                 @foreach ($product->productGallery as $productImage)
-                                <li><img class="zoom ing-fluid w-100" src="{{ asset($productImage->image)}}" alt="product"></li>  
+                                <li><img class="zoom ing-fluid w-100" src="{{ asset( @$productImage->image)}}" alt="{{ $product->name }}"></li>  
                                 @endforeach
                             </ul>
                         </div>
@@ -48,7 +47,7 @@
                 </div>
                 <div class="col-lg-7 wow fadeInUp" data-wow-duration="1s">
                     <div class="fp__menu_details_text">
-                        <h2>{{ $product->name }}</h2>
+                        <h2>{!! $product->name !!}</h2>
                         <p class="rating">
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
@@ -67,48 +66,38 @@
                         </h3>
                         <p class="short_description">{{ $product->short_description  }}</p>
 
-                        <div class="details_size">
-                            <h5>select size</h5>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="large" checked>
-                                <label class="form-check-label" for="large">
-                                    large <span>+ $350</span>
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="medium">
-                                <label class="form-check-label" for="medium">
-                                    medium <span>+ $250</span>
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="small">
-                                <label class="form-check-label" for="small">
-                                    small <span>+ $150</span>
-                                </label>
-                            </div>
-                        </div>
+                        @if ($product->productSize()->exists())
+                            <div class="details_size">
+                                <h5>select size</h5>
+                                <div class="form-check">
+                                    @foreach ($product->productSize as $productSize) 
+                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="size-{{ $productSize->id }}" checked>
+                                        <label class="form-check-label" for="size-{{ $productSize->id }}">
+                                            {{ @$productSize->name }} <span>+ $ {{ @$productSize->price }}</span>
+                                        </label>
+                                    @endforeach
+                                </div>
+                            </div>                            
+                        @endif
+ 
+                        @if ($product->productOption()->exists())
+                            <div class="details_extra_item">
+                                <h5>select option <span>(optional)</span></h5>
+                                    @foreach ($product->productOption as $productOption)
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="option-{{ @$productOption->id }}">
+                                        <label class="form-check-label" for="option-{{ $productOption->id }}">
+                                            {{ @$productOption->name }} <span>+ ${{ @$productOption->price}}</span>
+                                        </label>
+                                    </div>
+                                    @endforeach
+                            </div>                
+                        @endif
 
-                        <div class="details_extra_item">
-                            <h5>select option <span>(optional)</span></h5>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="coca-cola">
-                                <label class="form-check-label" for="coca-cola">
-                                    coca-cola <span>+ $10</span>
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="7up">
-                                <label class="form-check-label" for="7up">
-                                    7up <span>+ $15</span>
-                                </label>
-                            </div>
-                        </div>
-
-                        <div class="details_quentity">
-                            <h5>select quentity</h5>
-                            <div class="quentity_btn_area d-flex flex-wrapa align-items-center">
-                                <div class="quentity_btn">
+                        <div class="details_quantity">
+                            <h5>select quantity</h5>
+                            <div class="quantity_btn_area d-flex flex-wrapa align-items-center">
+                                <div class="quantity_btn">
                                     <button class="btn btn-danger"><i class="fal fa-minus"></i></button>
                                     <input type="text" placeholder="1">
                                     <button class="btn btn-success"><i class="fal fa-plus"></i></button>
@@ -141,48 +130,7 @@
                                 aria-labelledby="pills-home-tab" tabindex="0">
                                 <div class="menu_det_description">
                                     <p>{!! $product->long_description !!}</p>
-                                    <ul>
-                                        <li>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus
-                                            consectetur ullam in</li>
-                                        <li>Dolor sit amet consectetur adipisicing elit. Earum itaque nesciunt.</li>
-                                        <li>Corporis, quo cumque facere doloribus possimus nostrum sed magni quasi.</li>
-                                        <li>Reiciendis blanditiis architecto. Debitis nesciunt inventore voluptate
-                                            tempora ea.</li>
-                                        <li>Incidunt iste, corporis, quo cumque facere doloribus possimus
-                                            nostrum sed magni quasi</li>
-                                        <li>Architecto. Debitis nesciunt inventore voluptate tempora ea incidunt iste
-                                            corporis.</li>
-                                        <li>Earum itaque nesciunt dolor laudantium placeat sed velit aspernatur.</li>
-                                        <li>Laudantium placeat sed velit aspernatur, nobis quos quibusdam distinctio
-                                            voluptatum.</li>
-                                    </ul>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum itaque nesciunt
-                                        dolor laudantium placeat sed velit aspernatur, nobis quos quibusdam distinctio
-                                        voluptatum officia vel sapiente enim, reprehenderit impedit beatae molestias
-                                        dolorum. A laborum consectetur sed quis exercitationem optio consequatur, unde
-                                        neque est odit, pariatur quae incidunt quasi dolorem nihil aliquid ut veritatis
-                                        porro eaque cupiditate voluptatem vel ad! Asperiores, praesentium. sit amet
-                                        consectetur adipisicing elit. Doloribus consectetur ullam in? Beatae, dolorum ad
-                                        ea deleniti ratione voluptatum similique omnis voluptas tempora optio soluta</p>
 
-                                    <ul>
-                                        <li>Reiciendis blanditiis architecto. Debitis nesciunt inventore voluptate
-                                            tempora ea.</li>
-                                        <li>Incidunt iste, corporis, quo cumque facere doloribus possimus
-                                            nostrum sed magni quasi</li>
-                                        <li>Architecto. Debitis nesciunt inventore voluptate tempora ea incidunt iste
-                                            corporis.</li>
-                                        <li>Earum itaque nesciunt dolor laudantium placeat sed velit aspernatur.</li>
-                                        <li>Laudantium placeat sed velit aspernatur, nobis quos quibusdam distinctio
-                                            voluptatum.</li>
-                                    </ul>
-                                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus consectetur
-                                        ullam in? Beatae, dolorum ad ea deleniti ratione voluptatum similique omnis
-                                        voluptas tempora optio soluta vero veritatis reiciendis blanditiis architecto.
-                                        Debitis nesciunt inventore voluptate tempora ea incidunt iste, corporis, quo
-                                        cumque facere doloribus possimus nostrum sed magni quasi, assumenda autem!
-                                        Repudiandae nihil magnam provident illo alias vero odit repellendus, ipsa nemo
-                                        itaque. Aperiam fuga, magnam quia illum minima blanditiis tempore.</p>
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="pills-contact" role="tabpanel"
@@ -502,10 +450,10 @@
                                 </div>
                             </div>
 
-                            <div class="details_quentity">
-                                <h5>select quentity</h5>
-                                <div class="quentity_btn_area d-flex flex-wrapa align-items-center">
-                                    <div class="quentity_btn">
+                            <div class="details_quantity">
+                                <h5>select quantity</h5>
+                                <div class="quantity_btn_area d-flex flex-wrapa align-items-center">
+                                    <div class="quantity_btn">
                                         <button class="btn btn-danger"><i class="fal fa-minus"></i></button>
                                         <input type="text" placeholder="1">
                                         <button class="btn btn-success"><i class="fal fa-plus"></i></button>
