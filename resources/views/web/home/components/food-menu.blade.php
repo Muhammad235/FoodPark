@@ -64,8 +64,7 @@
                                     <del>${{$product->price}}</del> 
                                 @else
                                     ${{$product->offer_price }}
-                                @endif
-                                
+                                @endif     
                             </h5>
                             <ul class="d-flex flex-wrap justify-content-center">
                                 <li><a href="#" data-bs-toggle="modal" data-bs-target="#cartModal"><i

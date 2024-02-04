@@ -32,16 +32,9 @@
                     <div class="exzoom hidden" id="exzoom">
                         <div class="exzoom_img_box fp__menu_details_images">
                             <ul class='exzoom_img_ul'>
-                                <li><img class="zoom ing-fluid w-100" src="images/menu1.png" alt="product"></li>
+                                <li><img class="zoom ing-fluid w-100" src="{{ asset('web/images/menu1.png')}}" alt="product"></li>
                                 <li><img class="zoom ing-fluid w-100" src="images/menu2.png" alt="product"></li>
                                 <li><img class="zoom ing-fluid w-100" src="images/menu3.png" alt="product"></li>
-                                <li><img class="zoom ing-fluid w-100" src="images/menu4.png" alt="product"></li>
-                                <li><img class="zoom ing-fluid w-100" src="images/menu5.png" alt="product"></li>
-                                <li><img class="zoom ing-fluid w-100" src="images/menu6.png" alt="product"></li>
-                                <li><img class="zoom ing-fluid w-100" src="images/menu7.png" alt="product"></li>
-                                <li><img class="zoom ing-fluid w-100" src="images/menu8.png" alt="product"></li>
-                                <li><img class="zoom ing-fluid w-100" src="images/menu1.png" alt="product"></li>
-                                <li><img class="zoom ing-fluid w-100" src="images/menu2.png" alt="product"></li>
                             </ul>
                         </div>
                         <div class="exzoom_nav"></div>
@@ -55,7 +48,7 @@
                 </div>
                 <div class="col-lg-7 wow fadeInUp" data-wow-duration="1s">
                     <div class="fp__menu_details_text">
-                        <h2>Maxican Pizza Test Better</h2>
+                        <h2>{{ $product->name }}</h2>
                         <p class="rating">
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
@@ -64,11 +57,15 @@
                             <i class="far fa-star"></i>
                             <span>(201)</span>
                         </p>
-                        <h3 class="price">$320.00 <del>$350.00</del> </h3>
-                        <p class="short_description">Pizza is a savory dish of Italian origin consisting of a usually
-                            round, flattened base of leavened wheat-based dough topped with tomatoes, cheese, and often
-                            various other ingredients, which is then baked at a high temperature, traditionally in a
-                            wood-fired oven. A small pizza is sometimes called a pizzetta.</p>
+                        <h3 class="price">
+                            @if($product->offer_price > 0) 
+                                ${{$product->offer_price }}
+                                <del>${{$product->price}}</del> 
+                            @else
+                                ${{$product->offer_price }}
+                            @endif
+                        </h3>
+                        <p class="short_description">{{ $product->short_description  }}</p>
 
                         <div class="details_size">
                             <h5>select size</h5>
@@ -143,16 +140,7 @@
                             <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
                                 aria-labelledby="pills-home-tab" tabindex="0">
                                 <div class="menu_det_description">
-                                    <p>Ipsum dolor, sit amet consectetur adipisicing elit. Doloribus consectetur
-                                        ullam in? Beatae, dolorum ad ea deleniti ratione voluptatum similique omnis
-                                        voluptas tempora optio soluta vero veritatis reiciendis blanditiis architecto.
-                                        Debitis nesciunt inventore voluptate tempora ea incidunt iste, corporis, quo
-                                        cumque facere doloribus possimus nostrum sed magni quasi, assumenda autem!
-                                        Repudiandae nihil magnam provident illo alias vero odit repellendus, ipsa nemo
-                                        itaque. Aperiam fuga, magnam quia illum minima blanditiis tempore. vero
-                                        veritatis reiciendis blanditiis architecto. Debitis nesciunt inventore voluptate
-                                        tempora ea incidunt iste, corporis, quo cumque facere doloribus possimus nostrum
-                                        sed magni quasi</p>
+                                    <p>{!! $product->long_description !!}</p>
                                     <ul>
                                         <li>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus
                                             consectetur ullam in</li>
