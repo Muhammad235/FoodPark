@@ -22,6 +22,10 @@ class CategoryDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
+            // ->addColumn('id', function($count){
+            //     $count = 0;
+            //     return $count++;
+            // })
             ->addColumn('action', function($query){
                 $edit = "<a href='".route('admin.category.edit', $query->id)."' class='btn btn-primary'><i class='fas fa-edit'></i></a>";
                 $delete = "<a href='". route('admin.category.destroy', $query->id) ."' class='btn btn-danger ml-2 delete-item'><i class='fas fa-trash-alt'></i></a</form>";
@@ -59,7 +63,7 @@ class CategoryDataTable extends DataTable
                     ->columns($this->getColumns())
                     ->minifiedAjax()
                     //->dom('Bfrtip')
-                    ->orderBy(0, 'asc')
+                    ->orderBy(0)
                     ->selectStyleSingle()
                     ->buttons([
                         Button::make('excel'),
