@@ -42,10 +42,14 @@ class WebPageController extends Controller
         // $relatedProducts = $product->category->product()
         //                     ->where('category_id', $product->category_id)
         //                     ->where('id', '!=', $product->id)
+        //                     ->take(8)
+        //                     ->latest()
         //                     ->get();
 
         $relatedProducts = Product::where('category_id', $product->category_id)
                             ->where('id', '!=', $product->id)
+                            ->take(8)
+                            ->latest()
                             ->get();
 
         return view('web.pages.menu_details', compact('product', 'relatedProducts'));
