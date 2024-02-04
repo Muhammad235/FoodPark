@@ -3,14 +3,15 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Category;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
 use App\DataTables\CategoryDataTable;
+use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\Admin\CategoryCreateRequest;
+use App\Http\Requests\Admin\CategoryUpdateRequest;
 
 class CategoryController extends Controller
 {
@@ -66,10 +67,12 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(CategoryCreateRequest $request, string $id) : RedirectResponse
+    public function update(CategoryUpdateRequest $request, string $id) : RedirectResponse
     {
+        // dd($request);
         $category = Category::findOrFail($id);
-        $category->update($request->validated());
+        // dd($category);
+        $category->update($request->only('name', 'show_at_home', 'status'));
 
         toastr()->success("Updated successfully");
         return to_route('admin.category.index');

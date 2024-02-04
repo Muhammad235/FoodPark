@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Web;
 
+use App\Models\Category;
 use App\Models\Slider;
 use App\Models\WhyChooseUs;
 use App\Models\SectionTitle;
@@ -18,7 +19,9 @@ class WebPageController extends Controller
         $sectionTitles = $this->getSectionTitle();
         $WhyChooseUs = WhyChooseUs::where('status', 1)->get();
 
-        return view('web.home.index', compact('sliders', 'sectionTitles', 'WhyChooseUs'));
+        $categories = Category::where(['show_at_home' => 1, 'status' => 1])->get();
+
+        return view('web.home.index', compact('sliders', 'sectionTitles', 'WhyChooseUs', 'categories'));
     }
 
     public function getSectionTitle() : Collection {
