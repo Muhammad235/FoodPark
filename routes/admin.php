@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\SettingsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\ProductController;
@@ -51,5 +52,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'r
 
     // Product Size Routes
     Route::resource('product-option', ProductOptionController::class);
+
+    //Settings Routes
+    Route::get('setting', [SettingsController::class, 'index'])->name('setting.index');
 
 });

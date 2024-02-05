@@ -126,7 +126,9 @@
             <li><a class="nav-link" href="{{ route('admin.product.index') }}">Products</a></li>
           </ul>
         </li>
-        <li class="dropdown">
+        <li><a class="nav-link" href="{{ route('admin.setting.index') }}"><i class="fas fa-pencil-ruler"></i> <span>Settings</span></a></li>
+
+        {{-- <li class="dropdown">
           <a href="#" class="nav-link has-dropdown"><i class="fas fa-th"></i> <span>Bootstrap</span></a>
           <ul class="dropdown-menu">
             <li><a class="nav-link" href="bootstrap-alert.html">Alert</a></li>
@@ -150,7 +152,7 @@
             <li><a class="nav-link" href="bootstrap-tooltip.html">Tooltip</a></li>
             <li><a class="nav-link" href="bootstrap-typography.html">Typography</a></li>
           </ul>
-        </li>
+        </li> --}}
           <li><a class="nav-link" href="credits.html"><i class="fas fa-pencil-ruler"></i> <span>Credits</span></a></li>
       </ul>
         
