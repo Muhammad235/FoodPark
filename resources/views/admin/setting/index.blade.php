@@ -46,7 +46,7 @@
                             <div class="form-group">
                               <label for=""> Currency icon</label>
                               <select name="currency_icon" class="form-control select2">
-                                <option value="">Dollar</option>
+                                <option value="doll">Dollar</option>
                                 <option value="">Dollar</option>
                               </select>
                             </div>
