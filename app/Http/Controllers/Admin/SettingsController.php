@@ -13,16 +13,25 @@ class SettingsController extends Controller
 {
     public function index() : View
     {
+
         return view('admin.setting.index');
     }
 
     public function updateGeneralSetting(SettingsRequest $request)
     {
-        // dd($request->all());
 
-        Setting::create($request->validated());
+        $data = $request->validated();
+
+        foreach ($data as $key => $value) {
+            Setting::updateOrCreate(
+                ['key' => $key],
+                ['value' => $value]
+            );
+        }
+
         toastr()->success("Updated successfully");
+        
 
-        return to_route('admin.why-choose-us.index');
+        return to_route('admin.setting.index');
     }
 }
