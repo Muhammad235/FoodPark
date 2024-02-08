@@ -1,6 +1,9 @@
 @extends('admin.layouts.master')
 
 @section('content')
+
+@dd($setting)
+
 <section class="section">
     <div class="section-header">
       <h1>Settings</h1>
@@ -33,7 +36,7 @@
                         @method('PUT')
                         <div class="form-group">
                           <label for=""> Site Name</label>
-                          <input type="text" class="form-control" name="site_name">
+                          <input type="text" class="form-control" name="site_name" value="">
                         </div>
 
                         <div class="form-group">

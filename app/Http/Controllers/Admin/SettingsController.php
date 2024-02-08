@@ -14,7 +14,11 @@ class SettingsController extends Controller
     public function index() : View
     {
 
-        return view('admin.setting.index');
+
+        $keys = ['site_name', 'default_currency', 'currency_icon'];
+        $setting = Setting::whereIn('key', $keys)->pluck('value', 'key');
+
+        return view('admin.setting.index', compact('setting'));
     }
 
     public function updateGeneralSetting(SettingsRequest $request)
