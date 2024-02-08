@@ -2,8 +2,6 @@
 
 @section('content')
 
-@dd($setting)
-
 <section class="section">
     <div class="section-header">
       <h1>Settings</h1>
@@ -36,30 +34,31 @@
                         @method('PUT')
                         <div class="form-group">
                           <label for=""> Site Name</label>
-                          <input type="text" class="form-control" name="site_name" value="">
+                          <input type="text" class="form-control" name="site_name" value="{{ config('settings.site_name') }}">
                         </div>
 
                         <div class="form-group">
                           <label for=""> Default Currency</label>
-                          <input type="text" class="form-control" name="default_currency">
+                          <select name="default_currency" class="form-control select2">
+                            @foreach(config('currency.currency_list') as $currency)
+                              <option @selected( config('settings.default_currency') == $currency) value="{{ $currency }}"> {{ $currency }} </option>
+                            @endforeach
+                          </select>
                         </div>
 
                         <div class="row">
                           <div class="col-md-6">
                             <div class="form-group">
                               <label for=""> Currency icon</label>
-                              <select name="currency_icon" class="form-control select2">
-                                <option value="usd">Dollar</option>
-                                <option value="ngn">Naira</option>
-                              </select>
+                                <input type="text" class="form-control" name="currency_icon" value="{{ config('settings.currency_icon') }}">
                             </div>
                           </div>
                           <div class="col-md-6">
                             <div class="form-group">
                               <label for=""> Currency Icon Position</label>
                               <select name="currency_icon_position" class="form-control select2">
-                                <option value="right">Right</option>
-                                <option value="left">Left</option>
+                                <option @selected(config('settings.currency_icon_position') === 'right') value="right">Right</option>
+                                <option @selected(config('settings.currency_icon_position') === 'left') value="left">Left</option>
                               </select>
                             </div>
                           </div>

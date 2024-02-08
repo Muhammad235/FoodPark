@@ -6,7 +6,7 @@
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, target-densityDpi=device-dpi" />
     <meta name="csrf-token" content="{{ csrf_token() }}" />
-    <title>FoodPark || Restaurant</title>
+    <title>{{ config('settings.site_name') }} || Restaurant</title>
     <link rel="icon" type="image/png" href="images/favicon.png">
     <link rel="stylesheet" href="{{ asset('web/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('web/css/bootstrap.min.css') }}">
@@ -42,7 +42,6 @@
                         <li><a href="#"><i class="fab fa-facebook-f"></i></a> </li>
                         <li><a href="#"><i class="fab fa-twitter"></i></a> </li>
                         <li><a href="#"><i class="fab fa-linkedin-in"></i></a> </li>
-                        {{-- <li><a href="#"><i class="fab fa-behance"></i></a> </li> --}}
                     </ul>
                 </div>
             </div>

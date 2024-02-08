@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\Admin\SettingsRequest;
 use App\Models\Setting;
+use App\Services\SettingsService;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
@@ -14,11 +15,7 @@ class SettingsController extends Controller
     public function index() : View
     {
 
-
-        $keys = ['site_name', 'default_currency', 'currency_icon'];
-        $setting = Setting::whereIn('key', $keys)->pluck('value', 'key');
-
-        return view('admin.setting.index', compact('setting'));
+        return view('admin.setting.index');
     }
 
     public function updateGeneralSetting(SettingsRequest $request)
@@ -33,9 +30,12 @@ class SettingsController extends Controller
             );
         }
 
+        //clear settings cache upon update 
+        $settingsService = app(SettingsService::class);
+        $settingsService->clearCacheSettings();
+
         toastr()->success("Updated successfully");
         
-
         return to_route('admin.setting.index');
     }
 }

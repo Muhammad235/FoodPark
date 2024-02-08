@@ -16,15 +16,15 @@ class SettingsService
     }
 
 
-    public function setGlobalSettings()
+    public function setGlobalSettings() : void
     {
         $settings = $this->getSettings();
 
         config()->set('settings', $settings);
     }
 
-    private function clearCacheSettings()
+    public function clearCacheSettings() : void
     {
-        cache::forget('settings');
+        Cache::forget('settings');
     }
 }
