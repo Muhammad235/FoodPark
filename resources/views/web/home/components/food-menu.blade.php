@@ -37,7 +37,6 @@
                     ->take(8)
                     ->get();
 
-                    // dump(Product::all());
                 @endphp
 
                 @foreach ($products as $product)
@@ -60,10 +59,10 @@
                             <a class="title" href="{{ route('product.show', $product->slug) }}">{!! $product->name !!}</a>
                             <h5 class="price"> 
                                 @if($product->offer_price > 0) 
-                                    ${{$product->offer_price }}
-                                    <del>${{$product->price}}</del> 
+                                    {{ currencyPosition($product->offer_price) }}
+                                    <del>{{ currencyPosition($product->price) }} </del> 
                                 @else
-                                    ${{$product->offer_price }}
+                                    {{ currencyPosition($product->offer_price) }}
                                 @endif     
                             </h5>
                             <ul class="d-flex flex-wrap justify-content-center">

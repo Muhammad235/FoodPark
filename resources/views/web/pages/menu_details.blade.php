@@ -58,10 +58,10 @@
                         </p>
                         <h3 class="price">
                             @if($product->offer_price > 0) 
-                                ${{$product->offer_price }}
-                                <del>${{$product->price}}</del> 
+                                {{ currencyPosition($product->offer_price) }}
+                                <del>{{ currencyPosition($product->price) }} </del> 
                             @else
-                                ${{$product->offer_price }}
+                                {{ currencyPosition($product->offer_price) }}
                             @endif
                         </h3>
                         <p class="short_description">{{ $product->short_description  }}</p>

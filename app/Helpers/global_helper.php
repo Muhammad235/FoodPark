@@ -22,3 +22,15 @@ if (!function_exists('generateUniqueSlug')) {
         return $slug;
     }
 }
+
+
+if(!function_exists('currencyPosition')){
+    function currencyPosition($price) : string
+    {
+        if(config('settings.currency_icon_position') == 'left'){
+            return config('settings.currency_icon') . $price;
+        }else{
+            return $price . config('settings.currency_icon');
+        }
+    }
+}
