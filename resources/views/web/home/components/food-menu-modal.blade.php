@@ -6,7 +6,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i
                             class="fal fa-times"></i></button>
                     <div class="fp__cart_popup_img">
-                        <img src="images/menu1.png" alt="menu" class="img-fluid w-100">
+                        <img src="{{ asset('web/images/menu1.png')}}" alt="menu" class="img-fluid w-100">
                     </div>
                     <div class="fp__cart_popup_text">
                         <a href="#" class="title">Maxican Pizza Test Better</a>

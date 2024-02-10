@@ -130,6 +130,7 @@
     <!--main/custom js-->
     <script src="{{ asset('web/js/main.js') }}"></script>
 
+
     {{-- Set csrf at ajax header --}}
     <script>
         $.ajaxSetup({

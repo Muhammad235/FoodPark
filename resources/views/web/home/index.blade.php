@@ -25,9 +25,9 @@
         OFFER ITEM START
     ==============================-->
     @include('web.home.components.offer-item')
-    <!-- CART POPUT START -->
-    @include('web.home.components.cart')
-    <!-- CART POPUT END -->
+    <!-- ITEM MODAL START -->
+    @include('web.home.components.food-menu-modal')
+    <!-- ITEM MODAL END -->
     <!--=============================
         OFFER ITEM END
     ==============================-->
