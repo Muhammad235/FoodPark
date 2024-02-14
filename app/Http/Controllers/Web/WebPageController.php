@@ -58,16 +58,10 @@ class WebPageController extends Controller
     public function ProductMenuModal($productId)
     {
 
-        $data = Product::with(['category', 'productGallery', 'productSize', 'productOption'])->where('id', $productId)->get();
-
-
         try {
 
-            $data = Product::where('id', $productId)->get();
-
-            // $data = $productId->category();
-
-            // dd ($product);
+            $data = Product::with(['category', 'productGallery', 'productSize', 'productOption'])
+                                ->findOrfail($productId);
 
             return response()->json([
                 'status' => true,
