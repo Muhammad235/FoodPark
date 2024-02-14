@@ -82,7 +82,7 @@
         <ul>
             <li>
                 <div class="menu_cart_img">
-                    <img src="{{ asset('images/menu8.png')}}" alt="menu" class="img-fluid w-100">
+                    <img src="{{ asset('web/images/menu8.png')}}" alt="menu" class="img-fluid w-100">
                 </div>
                 <div class="menu_cart_text">
                     <a class="title" href="#">Hyderabadi Biryani </a>
@@ -95,7 +95,7 @@
             </li>
             <li>
                 <div class="menu_cart_img">
-                    <img src="{{ asset('images/menu4.png')}}" alt="menu" class="img-fluid w-100">
+                    <img src="{{ asset('web/images/menu4.png')}}" alt="menu" class="img-fluid w-100">
                 </div>
                 <div class="menu_cart_text">
                     <a class="title" href="#">Chicken Masalas</a>
@@ -107,7 +107,7 @@
             </li>
             <li>
                 <div class="menu_cart_img">
-                    <img src="{{ asset('images/menu5.png')}}" alt="menu" class="img-fluid w-100">
+                    <img src="{{ asset('web/images/menu5.png')}}" alt="menu" class="img-fluid w-100">
                 </div>
                 <div class="menu_cart_text">
                     <a class="title" href="#">Competently Supply Customized Initiatives</a>
@@ -120,7 +120,7 @@
             </li>
             <li>
                 <div class="menu_cart_img">
-                    <img src="{{ asset('images/menu6.png')}}" alt="menu" class="img-fluid w-100">
+                    <img src="{{ asset('web/images/menu6.png')}}" alt="menu" class="img-fluid w-100">
                 </div>
                 <div class="menu_cart_text">
                     <a class="title" href="#">Hyderabadi Biryani</a>
@@ -132,7 +132,7 @@
             </li>
             <li>
                 <div class="menu_cart_img">
-                    <img src="images/menu1.png" alt="menu" class="img-fluid w-100">
+                    <img src="{{ asset('web/images/menu6.png')}}" alt="menu" class="img-fluid w-100">
                 </div>
                 <div class="menu_cart_text">
                     <a class="title" href="#">Competently Supply</a>

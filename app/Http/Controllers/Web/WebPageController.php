@@ -55,4 +55,34 @@ class WebPageController extends Controller
         return view('web.pages.menu_details', compact('product', 'relatedProducts'));
     }
 
+    public function ProductMenuModal($productId)
+    {
+
+        $data = Product::with(['category', 'productGallery', 'productSize', 'productOption'])->where('id', $productId)->get();
+
+
+        try {
+
+            $data = Product::where('id', $productId)->get();
+
+            // $data = $productId->category();
+
+            // dd ($product);
+
+            return response()->json([
+                'status' => true,
+                'data' => $data 
+            ], 200);
+            
+        } catch (\Exception $e) {
+
+            return response()->json([
+                'status' => false,
+                'data' => $e->getMessage(),
+            ], 500);  
+        }
+
+
+    }
+
 }

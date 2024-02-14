@@ -4,7 +4,7 @@
     <!--=============================
         BREADCRUMB START
     ==============================-->
-    <section class="fp__breadcrumb" style="background: url(images/counter_bg.jpg);">
+    <section class="fp__breadcrumb" style="background: url({{ asset('web/images/counter_bg.jpg') }});">
         <div class="fp__breadcrumb_overlay">
             <div class="container">
                 <div class="fp__breadcrumb_text">
@@ -857,39 +857,11 @@
                                         <div class="fp__dashoard_wishlist">
 
                                             <div class="row">
+
                                                 <div class="col-xl-4 col-sm-6 col-lg-6">
                                                     <div class="fp__menu_item">
                                                         <div class="fp__menu_item_img">
-                                                            <img src="images/menu2_img_1.jpg" alt="menu"
-                                                                class="img-fluid w-100">
-                                                            <a class="category" href="#">Biryani</a>
-                                                        </div>
-                                                        <div class="fp__menu_item_text">
-                                                            <p class="rating">
-                                                                <i class="fas fa-star"></i>
-                                                                <i class="fas fa-star"></i>
-                                                                <i class="fas fa-star"></i>
-                                                                <i class="fas fa-star-half-alt"></i>
-                                                                <i class="far fa-star"></i>
-                                                                <span>10</span>
-                                                            </p>
-                                                            <a class="title" href="menu_details.html">Hyderabadi
-                                                                biryani</a>
-                                                            <h5 class="price">$70.00</h5>
-                                                            <ul class="d-flex flex-wrap justify-content-center">
-                                                                <li><a href="#" data-bs-toggle="modal"
-                                                                        data-bs-target="#cartModal"><i
-                                                                            class="fas fa-shopping-basket"></i></a></li>
-                                                                <li><a href="#"><i class="fal fa-heart"></i></a></li>
-                                                                <li><a href="#"><i class="far fa-eye"></i></a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xl-4 col-sm-6 col-lg-6">
-                                                    <div class="fp__menu_item">
-                                                        <div class="fp__menu_item_img">
-                                                            <img src="images/menu2_img_2.jpg" alt="menu"
+                                                            <img src="{{ asset('web/images/menu2_img_2.jpg')}}" alt="menu"
                                                                 class="img-fluid w-100">
                                                             <a class="category" href="#">chicken</a>
                                                         </div>
@@ -917,7 +889,7 @@
                                                 <div class="col-xl-4 col-sm-6 col-lg-6">
                                                     <div class="fp__menu_item">
                                                         <div class="fp__menu_item_img">
-                                                            <img src="images/menu2_img_3.jpg" alt="menu"
+                                                            <img src="{{ asset('web/images/menu2_img_3.jpg') }}" alt="menu"
                                                                 class="img-fluid w-100">
                                                             <a class="category" href="#">grill</a>
                                                         </div>
@@ -946,7 +918,7 @@
                                                 <div class="col-xl-4 col-sm-6 col-lg-6">
                                                     <div class="fp__menu_item">
                                                         <div class="fp__menu_item_img">
-                                                            <img src="images/menu2_img_4.jpg" alt="menu"
+                                                            <img src="{{ asset('web/images/menu2_img_4.jpg')}}" alt="menu"
                                                                 class="img-fluid w-100">
                                                             <a class="category" href="#">chicken</a>
                                                         </div>
@@ -961,63 +933,6 @@
                                                             </p>
                                                             <a class="title" href="menu_details.html">chicken Masala</a>
                                                             <h5 class="price">$80.00 <del>90.00</del></h5>
-                                                            <ul class="d-flex flex-wrap justify-content-center">
-                                                                <li><a href="#" data-bs-toggle="modal"
-                                                                        data-bs-target="#cartModal"><i
-                                                                            class="fas fa-shopping-basket"></i></a></li>
-                                                                <li><a href="#"><i class="fal fa-heart"></i></a></li>
-                                                                <li><a href="#"><i class="far fa-eye"></i></a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xl-4 col-sm-6 col-lg-6">
-                                                    <div class="fp__menu_item">
-                                                        <div class="fp__menu_item_img">
-                                                            <img src="images/menu2_img_5.jpg" alt="menu"
-                                                                class="img-fluid w-100">
-                                                            <a class="category" href="#">chicken</a>
-                                                        </div>
-                                                        <div class="fp__menu_item_text">
-                                                            <p class="rating">
-                                                                <i class="fas fa-star"></i>
-                                                                <i class="fas fa-star"></i>
-                                                                <i class="fas fa-star"></i>
-                                                                <i class="fas fa-star-half-alt"></i>
-                                                                <i class="far fa-star"></i>
-                                                                <span>120</span>
-                                                            </p>
-                                                            <a class="title" href="menu_details.html">chicken Masala</a>
-                                                            <h5 class="price">$80.00 <del>90.00</del></h5>
-                                                            <ul class="d-flex flex-wrap justify-content-center">
-                                                                <li><a href="#" data-bs-toggle="modal"
-                                                                        data-bs-target="#cartModal"><i
-                                                                            class="fas fa-shopping-basket"></i></a></li>
-                                                                <li><a href="#"><i class="fal fa-heart"></i></a></li>
-                                                                <li><a href="#"><i class="far fa-eye"></i></a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xl-4 col-sm-6 col-lg-6">
-                                                    <div class="fp__menu_item">
-                                                        <div class="fp__menu_item_img">
-                                                            <img src="images/menu2_img_6.jpg" alt="menu"
-                                                                class="img-fluid w-100">
-                                                            <a class="category" href="#">Biryani</a>
-                                                        </div>
-                                                        <div class="fp__menu_item_text">
-                                                            <p class="rating">
-                                                                <i class="fas fa-star"></i>
-                                                                <i class="fas fa-star"></i>
-                                                                <i class="fas fa-star"></i>
-                                                                <i class="fas fa-star-half-alt"></i>
-                                                                <i class="far fa-star"></i>
-                                                                <span>514</span>
-                                                            </p>
-                                                            <a class="title" href="menu_details.html">Hyderabadi
-                                                                biryani</a>
-                                                            <h5 class="price">$70.00</h5>
                                                             <ul class="d-flex flex-wrap justify-content-center">
                                                                 <li><a href="#" data-bs-toggle="modal"
                                                                         data-bs-target="#cartModal"><i
@@ -1066,7 +981,7 @@
                                         <div class="fp__review_area">
                                             <div class="fp__comment pt-0 mt_20">
                                                 <div class="fp__single_comment m-0 border-0">
-                                                    <img src="images/menu1.png" alt="review" class="img-fluid">
+                                                    <img src="{{ asset('images/menu1.png') }}" alt="review" class="img-fluid">
                                                     <div class="fp__single_comm_text">
                                                         <h3><a href="#">mamun ahmed shuvo</a> <span>29 oct 2022 </span>
                                                         </h3>
@@ -1123,7 +1038,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="fp__single_comment">
-                                                    <img src="images/menu4.png" alt="review" class="img-fluid">
+                                                    <img src="{{ asset('images/menu1.png') }}" alt="review" class="img-fluid">
                                                     <div class="fp__single_comm_text">
                                                         <h3><a href="#">ali ahmed jakir</a> <span>29 oct 2022 </span>
                                                         </h3>

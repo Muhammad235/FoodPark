@@ -16,7 +16,7 @@
                 <div class="col-xl-4 col-sm-6 col-lg-4 wow fadeInUp" data-wow-duration="1s">
                     <div class="fp__single_blog">
                         <a href="#" class="fp__single_blog_img">
-                            <img src="{{asset('web/images/menu2_img_1.jpg')}}" alt="blog" class="img-fluid w-100">
+                            <img src="{{ asset('web/images/menu2_img_2.jpg') }}" alt="blog" class="img-fluid w-100">
                         </a>
                         <div class="fp__single_blog_text">
                             <a class="category" href="#">chicken</a>

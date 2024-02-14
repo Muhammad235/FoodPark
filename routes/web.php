@@ -24,9 +24,9 @@ use App\Http\Controllers\Web\DashboardController;
 Route::get('/', [WebPageController::class, 'index']);
 Route::get('product/{product:slug}', [WebPageController::class, 'show'])->name('product.show');
 
+// Product menu modal
+Route::get('food-menu-modal/{productId}', [WebPageController::class, 'ProductMenuModal'])->name('food.menu.modal');
 
-/** Authenticated user routes **/
-// Route::get('load-product-modal/{product:id}', [WebPageController::class, '']);
 
 
 /** Authenticated user routes **/

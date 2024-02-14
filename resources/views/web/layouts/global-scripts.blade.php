@@ -4,8 +4,7 @@
 function loadProductModal(productId) {
     $.ajax({
         method : 'GET',
-        // url : "{{ route('food-menu-modal', :productId) }}".replace(':productId', productId),
-        url : {{ route('food-menu-modal', productId) }},
+        url : '{{ route("food.menu.modal", ':productId') }}'.replace(':productId', productId),
         success: function(response){
             console.log(response)
         },

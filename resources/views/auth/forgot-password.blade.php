@@ -4,7 +4,7 @@
         <!--=============================
         BREADCRUMB START
     ==============================-->
-    <section class="fp__breadcrumb" style="background: url(images/counter_bg.jpg);">
+    <section class="fp__breadcrumb" style="background: url({{ asset('web/images/counter_bg.jpg')}});">
         <div class="fp__breadcrumb_overlay">
             <div class="container">
                 <div class="fp__breadcrumb_text">
@@ -25,7 +25,7 @@
     <!--=========================
         FORGOT PASSWORD START 
     ==========================-->
-    <section class="fp__signin" style="background: url(images/login_bg.jpg);">
+    <section class="fp__signin" style="background: url asset('images/login_bg.jpg');">
         <div class="fp__signin_overlay pt_125 xs_pt_95 pb_100 xs_pb_70">
             <div class="container">
                 <div class="row wow fadeInUp" data-wow-duration="1s">

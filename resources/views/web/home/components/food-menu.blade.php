@@ -1,6 +1,8 @@
 @use('\App\Models\Product');
 
 
+@include('web.layouts.global-scripts')
+
 <section class="fp__menu mt_95 xs_mt_65">
     <div class="container">
         <div class="row wow fadeInUp" data-wow-duration="1s">
