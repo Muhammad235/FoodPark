@@ -57,25 +57,10 @@ class WebPageController extends Controller
 
     public function ProductMenuModal($productId)
     {
+        $product = Product::with(['category', 'productGallery', 'productSize', 'productOption'])
+                ->findOrfail($productId);
 
-        try {
-
-            $data = Product::with(['category', 'productGallery', 'productSize', 'productOption'])
-                                ->findOrfail($productId);
-
-            return response()->json([
-                'status' => true,
-                'data' => $data 
-            ], 200);
-            
-        } catch (\Exception $e) {
-
-            return response()->json([
-                'status' => false,
-                'data' => $e->getMessage(),
-            ], 500);  
-        }
-
+        return view('web.home.components.render.food-menu-modal-content', compact('product'))->render();
 
     }
 
