@@ -6,7 +6,13 @@ function loadProductModal(productId) {
         method : 'GET',
         url : '{{ route("food.menu.modal", ':productId') }}'.replace(':productId', productId),
         success: function(response){
-            console.log(response)
+            // console.log(response)
+
+            //update the modal with the html response 
+            $('.insert_modal_content').html(response);
+
+            //show the modal after loading content
+            $('#cartModal').modal('show');
         },
         error: function(xhr, status, error){
             console.error(error)
