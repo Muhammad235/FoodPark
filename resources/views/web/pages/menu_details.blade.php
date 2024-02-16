@@ -272,10 +272,10 @@
                                     <a class="title" href="menu_details.html">{{ $relatedProduct->name }}</a>
                                     <h5 class="price">
                                         @if($relatedProduct->offer_price > 0) 
-                                           ${{$relatedProduct->offer_price }}
-                                           <del>${{$relatedProduct->price}}</del> 
+                                           {{ currencyPosition($relatedProduct->offer_price) }}
+                                           <del>{{ currencyPosition($relatedProduct->price) }}</del> 
                                         @else
-                                            ${{$relatedProduct->offer_price }}
+                                            {{ currencyPosition($relatedProduct->price) }}
                                         @endif
                                     </h5>
                                     <ul class="d-flex flex-wrap justify-content-center">

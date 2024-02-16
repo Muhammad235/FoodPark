@@ -2,8 +2,11 @@
  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
     <i class="fal fa-times"></i>
  </button>
+
+ <form action="" method="post">
+
     <div class="fp__cart_popup_img">
-    <img src="{{ asset('web/images/menu1.png')}}" alt="menu" class="img-fluid w-100">
+    <img src="{{ asset( $product->thumb_image )}}" alt="menu" class="img-fluid w-100">
     </div>
     <div class="fp__cart_popup_text">
     <a href="#" class="title">{{ $product->name }}</a>
@@ -16,11 +19,14 @@
         <span>(201)</span>
     </p>
     <h4 class="price"> 
-        @if($product->offer_price > 0) 
+        @if($product->offer_price > 0)
+        <input type="hidden" name="base_price" value="{{ $product->offer_price }}">
+        
             {{ currencyPosition($product->offer_price) }}
             <del>{{ currencyPosition($product->price) }} </del> 
         @else
-            {{ currencyPosition($product->offer_price) }}
+            {{ currencyPosition($product->price) }}
+            <input type="hidden" name="base_price" value="{{ $product->price }}">
         @endif 
     </h4>
 
@@ -67,3 +73,4 @@
         <li><a class="common_btn" href="#">add to cart</a></li>
     </ul>
     </div>
+</form>
