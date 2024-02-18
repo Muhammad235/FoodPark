@@ -20,7 +20,7 @@
     </p>
     <h4 class="price"> 
         @if($product->offer_price > 0)
-        <input type="hidden" name="base_price" value="{{ $product->offer_price }}">
+            <input type="hidden" name="base_price" value="{{ $product->offer_price }}">
         
             {{ currencyPosition($product->offer_price) }}
             <del>{{ currencyPosition($product->price) }} </del> 
@@ -35,7 +35,9 @@
             <h5>select size</h5>
             <div class="form-check">
                 @foreach ($product->productSize as $productSize) 
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="size-{{ $productSize->id }}" checked>
+                
+                    <input class="form-check-input" type="radio" name="product_size" id="size-{{ $productSize->id }}" value="{{ $productSize->id }}" data-price="{{ $productSize->price }}" >
+
                     <label class="form-check-label" for="size-{{ $productSize->id }}">
                         {{ @$productSize->name }} <span>+ {{ currencyPosition(@$productSize->price) }}</span>
                     </label>
@@ -49,9 +51,10 @@
             <h5>select option <span>(optional)</span></h5>
                 @foreach ($product->productOption as $productOption)
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="option-{{ @$productOption->id }}">
+                    <input class="form-check-input" type="checkbox" name="product_option[]" data-price="{{ $productOption->price}}" value="{{ $productOption->id }}" id="option-{{ @$productOption->id }}">
+
                     <label class="form-check-label" for="option-{{ $productOption->id }}">
-                        {{ @$productOption->name }} <span>+ ${{ @$productOption->price}}</span>
+                        {{ @$productOption->name }} <span>+ {{ currencyPosition(@$productOption->price)}}</span>
                     </label>
                 </div>
                 @endforeach
@@ -66,7 +69,13 @@
                 <input type="text" placeholder="1">
                 <button class="btn btn-success"><i class="fal fa-plus"></i></button>
             </div>
-            <h3>$320.00</h3>
+            @if($product->offer_price > 0)
+        
+                <h3 id="total_price">{{ currencyPosition($product->offer_price) }} </h3> 
+            @else
+                <h3 id="total_price">{{ currencyPosition($product->price) }} </h3>
+                {{-- <input type="" name="base_price" value="{{ $product->price }}"> --}}
+            @endif 
         </div>
     </div>
     <ul class="details_button_area d-flex flex-wrap">
@@ -74,3 +83,46 @@
     </ul>
     </div>
 </form>
+
+
+
+<script>
+    $(document).ready(function(){
+        $('input[name="product_size"]').on('change', function(){
+            updateTotalPrice();
+        })
+
+        $('input[name="product_option[]"]').on('change', function(){
+            updateTotalPrice();
+        })
+
+        //update the total price based on the selected options
+        function updateTotalPrice() {
+            let basePice = parseFloat($('input[name="base_price"]').val());
+            let baseSizePrice = 0;
+            let baseOptionPrice = 0;
+
+            // Calculate the selected size price 
+            let SelectedSizePice = $('input[name="product_size"]:checked');
+
+            if (SelectedSizePice.length > 0) {
+                baseSizePrice = parseFloat(SelectedSizePice.data('price'));
+            }
+
+            // Calculate the selected options price 
+            let SelectedOptionPice = $('input[name="product_option[]"]:checked');
+
+            $(SelectedOptionPice).each(function() {
+                baseOptionPrice += parseFloat($(this).data('price'));
+            });
+
+
+            // Calculate the total price 
+            const totalPrice = (basePice + baseSizePrice + baseOptionPrice)
+
+            // Update the total price value
+            $('#total_price').text("{{ config('settings.currency_icon') }}" + totalPrice);
+
+        }
+    })
+</script>
