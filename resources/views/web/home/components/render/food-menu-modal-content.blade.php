@@ -3,6 +3,8 @@
     <i class="fal fa-times"></i>
  </button>
 
+
+
  <form action="" method="POST">
 
     <div class="fp__cart_popup_img">
@@ -88,6 +90,7 @@
 
 <script>
     $(document).ready(function(){
+
         $('input[name="product_size"]').on('change', function(){
             updateTotalPrice();
         })

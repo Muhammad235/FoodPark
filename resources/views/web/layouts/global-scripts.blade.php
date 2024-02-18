@@ -5,6 +5,9 @@ function loadProductModal(productId) {
     $.ajax({
         method : 'GET',
         url : '{{ route("food.menu.modal", ':productId') }}'.replace(':productId', productId),
+        beforeSend: function(){
+            $('.overlay').addClass('active');
+        },
         success: function(response){
             // console.log(response)
 
@@ -16,7 +19,10 @@ function loadProductModal(productId) {
         },
         error: function(xhr, status, error){
             console.error(error)
-        }
+        },
+        complete: function(){
+            $('.overlay').removeClass('active');
+        },
     })
 }
 
