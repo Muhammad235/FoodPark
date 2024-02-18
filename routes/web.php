@@ -6,6 +6,7 @@ use App\Http\Controllers\Web\ProfileController;
 use App\Http\Controllers\Web\WebPageController;
 use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\Web\DashboardController;
+use App\Http\Controllers\web\CartController;
 
 
 /*
@@ -26,6 +27,9 @@ Route::get('product/{product:slug}', [WebPageController::class, 'show'])->name('
 
 // Product menu modal
 Route::get('food-menu-modal/{productId}', [WebPageController::class, 'ProductMenuModal'])->name('food.menu.modal');
+
+// Cart Route
+Route::post('add-to-cart', [CartController::class, 'store'])->name('add-to-cart.store');
 
 
 

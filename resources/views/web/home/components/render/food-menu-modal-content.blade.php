@@ -4,8 +4,9 @@
  </button>
 
 
+ <form  >
 
- <form action="" method="POST">
+    <input type="hidden" name="product_id" value="{{ $product->id }}">
 
     <div class="fp__cart_popup_img">
     <img src="{{ asset( $product->thumb_image )}}" alt="menu" class="img-fluid w-100">
@@ -68,20 +69,21 @@
         <div class="quantity_btn_area d-flex flex-wrapa align-items-center">
             <div class="quantity_btn">
                 <a class="btn btn-danger decreament"><i class="fal fa-minus"></i></a>
-                <input type="text" placeholder="1" value="1" id="quantity" readonly>
+                <input type="text" placeholder="1" value="1" name="quantity" id="quantity" readonly>
                 <a class="btn btn-success increament"><i class="fal fa-plus"></i></a>
+
             </div>
             @if($product->offer_price > 0)
         
                 <h3 id="total_price">{{ currencyPosition($product->offer_price) }} </h3> 
             @else
                 <h3 id="total_price">{{ currencyPosition($product->price) }} </h3>
-                {{-- <input type="" name="base_price" value="{{ $product->price }}"> --}}
             @endif 
         </div>
     </div>
     <ul class="details_button_area d-flex flex-wrap">
-        <li><a class="common_btn" href="#">add to cart</a></li>
+        {{-- <li><button type="submit" class="common_btn" >add to cart</button></li> --}}
+        <li><a  class="common_btn" id="model_add_to_cart_form">add to cart</a></li>
     </ul>
     </div>
 </form>
@@ -124,7 +126,6 @@
         })
 
 
-        
         //update the total price based on the selected options
         function updateTotalPrice() {
             let basePice = parseFloat($('input[name="base_price"]').val());
@@ -157,5 +158,37 @@
             $('#total_price').text("{{ config('settings.currency_icon') }}" + totalPrice);
 
         }
+
+
+        // Add product to cart
+
+        $('#model_add_to_cart_form').on('click', function(e) {
+            e.preventDefault(); 
+
+            console.log('form clicked');
+
+            // Construct the data to be sent
+            var formData = {
+                product_id: $('input[name="product_id"]').val(),
+                product_size: $('input[name="product_size"]:checked').val(),
+                product_option: $('input[name="product_option[]"]:checked').val(),
+                quantity: $('#quantity').val(),
+            };
+
+
+            $.ajax({
+                method: 'POST',
+                url: '{{ route("add-to-cart.store") }}',
+                dataType: 'json',
+                data: formData,
+                success: function(response) {
+                    console.log(response);
+                },
+                error: function(xhr, status, error) {
+                    console.log(error);
+                }
+            });
+        });
+
     })
 </script>

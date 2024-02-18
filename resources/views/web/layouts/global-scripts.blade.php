@@ -25,5 +25,4 @@ function loadProductModal(productId) {
         },
     })
 }
-
 </script>
