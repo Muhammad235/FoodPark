@@ -3,7 +3,7 @@
     <i class="fal fa-times"></i>
  </button>
 
- <form action="" method="post">
+ <form action="" method="POST">
 
     <div class="fp__cart_popup_img">
     <img src="{{ asset( $product->thumb_image )}}" alt="menu" class="img-fluid w-100">
@@ -65,9 +65,9 @@
         <h5>select quantity</h5>
         <div class="quantity_btn_area d-flex flex-wrapa align-items-center">
             <div class="quantity_btn">
-                <button class="btn btn-danger"><i class="fal fa-minus"></i></button>
-                <input type="text" placeholder="1">
-                <button class="btn btn-success"><i class="fal fa-plus"></i></button>
+                <a class="btn btn-danger decreament"><i class="fal fa-minus"></i></a>
+                <input type="text" placeholder="1" value="1" id="quantity" readonly>
+                <a class="btn btn-success increament"><i class="fal fa-plus"></i></a>
             </div>
             @if($product->offer_price > 0)
         
@@ -96,11 +96,41 @@
             updateTotalPrice();
         })
 
+
+        // Product increament and decreament logic
+        $('.increament').on('click', function(){
+            let quantity = $('#quantity');
+
+            let CurrentQuantity = parseFloat(quantity.val())
+
+            quantity.val(++CurrentQuantity)
+
+            updateTotalPrice();
+        })
+
+        $('.decreament').on('click', function(){
+            let quantity = $('#quantity');
+
+            let CurrentQuantity = parseFloat(quantity.val())
+
+            if (CurrentQuantity > 1) {
+                quantity.val(CurrentQuantity - 1)
+                
+                updateTotalPrice();   
+            }
+        })
+
+
+        
         //update the total price based on the selected options
         function updateTotalPrice() {
             let basePice = parseFloat($('input[name="base_price"]').val());
             let baseSizePrice = 0;
             let baseOptionPrice = 0;
+
+            let quantity = $('#quantity');
+            let CurrentQuantity = parseFloat(quantity.val())
+
 
             // Calculate the selected size price 
             let SelectedSizePice = $('input[name="product_size"]:checked');
@@ -118,7 +148,7 @@
 
 
             // Calculate the total price 
-            const totalPrice = (basePice + baseSizePrice + baseOptionPrice)
+            const totalPrice = (basePice + baseSizePrice + baseOptionPrice) * CurrentQuantity;
 
             // Update the total price value
             $('#total_price').text("{{ config('settings.currency_icon') }}" + totalPrice);
