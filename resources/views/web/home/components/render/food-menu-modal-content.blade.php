@@ -54,7 +54,7 @@
             <h5>select option <span>(optional)</span></h5>
                 @foreach ($product->productOption as $productOption)
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="product_option[]" data-price="{{ $productOption->price}}" value="{{ $productOption->id }}" id="option-{{ @$productOption->id }}">
+                    <input class="form-check-input" type="checkbox" name="product_option[]" data-price="{{ $productOption->price}}" value="{{ $productOption->id }}" id="option-{{ $productOption->id }}">
 
                     <label class="form-check-label" for="option-{{ $productOption->id }}">
                         {{ @$productOption->name }} <span>+ {{ currencyPosition(@$productOption->price)}}</span>
@@ -165,7 +165,6 @@
         $('#model_add_to_cart_form').on('click', function(e) {
             e.preventDefault(); 
 
-            console.log('form clicked');
 
             // Construct the data to be sent
             var formData = {
