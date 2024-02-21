@@ -183,7 +183,6 @@
                 productOptionArray.push($(this).val());
             });
 
-            // console.log(productOptionArray);
 
             // form data to be sent
             var formData = {
@@ -193,15 +192,6 @@
                 quantity: $('#quantity').val(),
             };
 
-            // var formData = {
-            //     product_id: '11',
-            //     product_size: $('input[name="product_size"]:checked').val(),
-            //     // product_option: null,
-            //     quantity: '1',
-            // };
-
-
-            console.log(formData)
 
             $.ajax({
                 method: 'POST',

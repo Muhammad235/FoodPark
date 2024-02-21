@@ -29,7 +29,6 @@ class CartController extends Controller
                 ]
             ];
 
-
             if($productSize !== null){
                 $options['product_size'][] = [
                     'id' => $productSize?->id,
@@ -51,7 +50,6 @@ class CartController extends Controller
                 }
             }
 
-
             Cart::add([
                 'id' => $product->id,
                 'name' => $product->name,
@@ -70,7 +68,7 @@ class CartController extends Controller
         } catch (\Exception $e) {
             return response([
                 'status' => false,
-                'message' => 'An error occurred'. $e->getMessage()
+                'message' => 'An error occurred'
             ], 500);
         }
 
