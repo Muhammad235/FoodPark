@@ -11,52 +11,62 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 class CartController extends Controller
 {
     public function store(Request $request){
-        $product = Product::with(['productSize', 'productOption'])->findOrFail($request->product_id);
-        $productSize = $product->productSize()->where('id', $request->product_size)->first();
-        $productOptions = $product->productOption()->whereIn('id', $request->product_option)->get();
 
-        $options = [
+        try {
+            
+            $product = Product::with(['productSize', 'productOption'])->findOrFail($request->product_id);
+            $productSize = $product->productSize()->where('id', $request->product_size)->first();
+            $productOptions = $product->productOption()->whereIn('id', $request->product_option)->get();
 
-            'product_size' => [],
+            $options = [
 
-            'product_options' => [],
+                'product_size' => [],
 
-            'product_info' => [
-                'image' => $product->thumb_image,
-                'slug' => $product->slug,
-            ]
-        ];
+                'product_options' => [],
 
-
-        if($productSize !== null){
-            $options['product_size'][] = [
-                'id' => $productSize?->id,
-                'name' => $productSize?->name,
-                'price' => $productSize?->price,
+                'product_info' => [
+                    'image' => $product->thumb_image,
+                    'slug' => $product->slug,
+                ]
             ];
+
+
+            if($productSize !== null){
+                $options['product_size'][] = [
+                    'id' => $productSize?->id,
+                    'name' => $productSize?->name,
+                    'price' => $productSize?->price,
+                ];
+            }
+
+            foreach ($productOptions as $productOption) {
+                $options['product_options'][] = [
+                    'id' => $productOption?->id,
+                    'name' => $productOption?->name,
+                    'price' => $productOption?->price,
+                ];
+            }
+
+            Cart::add([
+                'id' => $product->id,
+                'name' => $product->name,
+                'qty' => $request->quantity,
+                'price' => $product->offer_price > 0 ? $product->offer_price : $product->price, 
+                'weight' => 0,
+                'options' => $options,
+            ]);
+
+            return response([
+                'status' => true,
+                'message' => 'Product added to cart successfully'
+            ], 200);
+
+        } catch (\Exception $e) {
+            return response([
+                'status' => false,
+                'message' => 'An error occurred'
+            ], 500);
         }
-
-        foreach ($productOptions as $productOption) {
-            $options['product_options'][] = [
-                'id' => $productOption?->id,
-                'name' => $productOption?->name,
-                'price' => $productOption?->price,
-            ];
-        }
-
-        Cart::add([
-            'id' => $product->id,
-            'name' => $product->name,
-            'qty' => $request->quantity,
-            'price' => $product->offer_price > 0 ? $product->offer_price : $product->price, 
-            'weight' => 0,
-            'options' => $options,
-        ]);
-
-        return response([
-            'status' => 'success',
-            'message' => 'Product added to cart successfully'
-        ], 200);
 
     }
 }

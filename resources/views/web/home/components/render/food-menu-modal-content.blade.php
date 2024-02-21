@@ -166,16 +166,13 @@
             e.preventDefault(); 
 
             //validation
-            // let selectedSize = $('input[name="product_size"]:checked').val();
+            let selectedSize = $('input[name="product_size"]:checked');
 
-            // if (selectedSize === undefined) {
-
-            //   @php
-            //     toastr()->error("Select a product size");
-            //   @endphp 
- 
-            //   return;
-
+            // if (selectedSize.length > 0) {
+            //     if ($('input[name="product_size"]:checked').val() === undefined) {
+            //       toastr.error("Select a product size");
+            //       return;
+            //     }
             // }
 
             selectedOption = $('input[name="product_option[]"]:checked'),
@@ -186,7 +183,6 @@
                 productOptionArray.push($(this).val());
             });
 
-            console.log(productOptionArray);
 
             // form data to be sent
             var formData = {
@@ -203,10 +199,13 @@
                 dataType: 'json',
                 data: formData,
                 success: function(response) {
-                    console.log(response);
+
+                //   toastr.success(response.message);
+   
                 },
                 error: function(xhr, status, error) {
-                    console.log(error);
+                   let errorMessage = xhr.responseJSON.message;
+                //    toastr.error(errorMessage);
                 }
             });
         });
