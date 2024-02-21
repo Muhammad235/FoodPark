@@ -165,12 +165,34 @@
         $('#model_add_to_cart_form').on('click', function(e) {
             e.preventDefault(); 
 
+            //validation
+            // let selectedSize = $('input[name="product_size"]:checked').val();
 
-            // Construct the data to be sent
+            // if (selectedSize === undefined) {
+
+            //   @php
+            //     toastr()->error("Select a product size");
+            //   @endphp 
+ 
+            //   return;
+
+            // }
+
+            selectedOption = $('input[name="product_option[]"]:checked'),
+
+            productOptionArray = [];
+
+            selectedOption.each(function() {
+                productOptionArray.push($(this).val());
+            });
+
+            console.log(productOptionArray);
+
+            // form data to be sent
             var formData = {
                 product_id: $('input[name="product_id"]').val(),
                 product_size: $('input[name="product_size"]:checked').val(),
-                product_option: $('input[name="product_option[]"]:checked').val(),
+                product_option: productOptionArray,
                 quantity: $('#quantity').val(),
             };
 
