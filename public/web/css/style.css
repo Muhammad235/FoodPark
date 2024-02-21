@@ -106,6 +106,7 @@ button {
     font-size: 15px !important;
     font-weight: 600 !important;
     position: relative;
+    cursor: pointer;
     transition: all linear .3s;
     -webkit-transition: all linear .3s;
     -moz-transition: all linear .3s;

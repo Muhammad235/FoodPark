@@ -16,7 +16,6 @@ class CartController extends Controller
             
             $product = Product::with(['productSize', 'productOption'])->findOrFail($request->product_id);
             $productSize = $product->productSize()->where('id', $request->product_size)->first();
-            $productOptions = $product->productOption()->whereIn('id', $request->product_option)->get();
 
             $options = [
 
@@ -39,13 +38,19 @@ class CartController extends Controller
                 ];
             }
 
-            foreach ($productOptions as $productOption) {
-                $options['product_options'][] = [
-                    'id' => $productOption?->id,
-                    'name' => $productOption?->name,
-                    'price' => $productOption?->price,
-                ];
+            if ($request->product_option) {
+
+                $productOptions = $product->productOption()->whereIn('id', $request->product_option)->get();
+
+                foreach ($productOptions as $productOption) {
+                    $options['product_options'][] = [
+                        'id' => $productOption?->id,
+                        'name' => $productOption?->name,
+                        'price' => $productOption?->price,
+                    ];
+                }
             }
+
 
             Cart::add([
                 'id' => $product->id,
@@ -56,6 +61,7 @@ class CartController extends Controller
                 'options' => $options,
             ]);
 
+
             return response([
                 'status' => true,
                 'message' => 'Product added to cart successfully'
@@ -64,9 +70,10 @@ class CartController extends Controller
         } catch (\Exception $e) {
             return response([
                 'status' => false,
-                'message' => 'An error occurred'
+                'message' => 'An error occurred'. $e->getMessage()
             ], 500);
         }
 
     }
+    
 }

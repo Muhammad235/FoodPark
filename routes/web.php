@@ -20,7 +20,6 @@ use App\Http\Controllers\web\CartController;
 |
 */
 
-
 /** WebPage routes user routes **/
 Route::get('/', [WebPageController::class, 'index']);
 Route::get('product/{product:slug}', [WebPageController::class, 'show'])->name('product.show');
