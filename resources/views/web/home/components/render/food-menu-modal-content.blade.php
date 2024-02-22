@@ -168,12 +168,12 @@
             //validation
             let selectedSize = $('input[name="product_size"]:checked');
 
-            // if (selectedSize.length > 0) {
-            //     if ($('input[name="product_size"]:checked').val() === undefined) {
-            //       toastr.error("Select a product size");
-            //       return;
-            //     }
-            // }
+            if (selectedSize.length > 0) {
+                if ($('input[name="product_size"]:checked').val() === undefined) {
+                  toastr.error("Select a product size");
+                  return false;
+                }
+            }
 
             selectedOption = $('input[name="product_option[]"]:checked'),
 
@@ -192,6 +192,7 @@
                 quantity: $('#quantity').val(),
             };
 
+            // console.log(formData);
 
             $.ajax({
                 method: 'POST',
@@ -200,16 +201,12 @@
                 data: formData,
                 success: function(response) {
 
-                //   toastr.success(response.message);
-
-                console.log(response);
+                  toastr.success(response.message);
    
                 },
                 error: function(xhr, status, error) {
-                //    let errorMessage = xhr.responseJSON.message;
-                //    toastr.error(errorMessage);
-
-                 console.error(error);
+                   let errorMessage = xhr.responseJSON.message;
+                   toastr.error(errorMessage);
                 }
             });
         });

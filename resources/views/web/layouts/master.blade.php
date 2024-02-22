@@ -21,6 +21,8 @@
     <link rel="stylesheet" href="{{ asset('web/css/style.css')}}">
     <link rel="stylesheet" href="{{ asset('web/css/responsive.css')}}">
     <!-- <link rel="stylesheet" href="css/rtl.css"> -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
 </head>
 
 <body>
@@ -111,6 +113,8 @@
 
     <!--jquery library js-->
     <script src="{{ asset('web/js/jquery-3.6.0.min.js') }}"></script>
+    {{-- toastr js --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!--bootstrap js-->
     <script src="{{ asset('web/js/bootstrap.bundle.min.js') }}"></script>
     <!--font-awesome js-->

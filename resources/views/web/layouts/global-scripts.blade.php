@@ -18,7 +18,9 @@ function loadProductModal(productId) {
             $('#cartModal').modal('show');
         },
         error: function(xhr, status, error){
-            console.error(error)
+            // console.error(error)
+
+            toastr.success("An error occurred");
         },
         complete: function(){
             $('.overlay').removeClass('active');
