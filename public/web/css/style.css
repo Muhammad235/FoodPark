@@ -607,7 +607,8 @@ button {
 }
 
 .fp__menu_cart_area ul {
-    max-height: 450px;
+    /* max-height: 400px; */
+    max-height: 60vh;
     overflow-x: hidden;
 }
 

@@ -6,6 +6,7 @@ function loadProductModal(productId) {
         method : 'GET',
         url : '{{ route("food.menu.modal", ':productId') }}'.replace(':productId', productId),
         beforeSend: function(){
+            $('.overlay').removeClass('d-none');
             $('.overlay').addClass('active');
         },
         success: function(response){
@@ -24,7 +25,32 @@ function loadProductModal(productId) {
         },
         complete: function(){
             $('.overlay').removeClass('active');
+            $('.overlay').addClass('d-none');
         },
     })
 }
+
+// update cart 
+
+function updateCart() {
+    $.ajax({
+        method : 'GET',
+        url : '',
+        beforeSend: function(){
+ 
+        },
+        success: function(response){
+
+
+        },
+        error: function(xhr, status, error){
+            // console.error(error)
+            // toastr.success("An error occurred");
+        },
+        complete: function(){
+
+        },
+    })
+}
+
 </script>

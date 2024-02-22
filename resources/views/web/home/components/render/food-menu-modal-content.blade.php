@@ -4,8 +4,7 @@
  </button>
 
 
- <form  >
-
+ <form>
     <input type="hidden" name="product_id" value="{{ $product->id }}">
 
     <div class="fp__cart_popup_img">
@@ -83,11 +82,10 @@
     </div>
     <ul class="details_button_area d-flex flex-wrap">
         {{-- <li><button type="submit" class="common_btn" >add to cart</button></li> --}}
-        <li><a  class="common_btn" id="model_add_to_cart_form">add to cart</a></li>
+        <li><button class="common_btn" id="model_add_to_cart_button">add to cart</a></li>
     </ul>
     </div>
 </form>
-
 
 
 <script>
@@ -162,11 +160,11 @@
 
         // Add product to cart
 
-        $('#model_add_to_cart_form').on('click', function(e) {
+        $('#model_add_to_cart_button').on('click', function(e) {
             e.preventDefault(); 
 
             //validation
-            let selectedSize = $('input[name="product_size"]:checked');
+            let selectedSize = $('input[name="product_size"]');
 
             if (selectedSize.length > 0) {
                 if ($('input[name="product_size"]:checked').val() === undefined) {
@@ -199,6 +197,11 @@
                 url: '{{ route("add-to-cart.store") }}',
                 dataType: 'json',
                 data: formData,
+                beforeSend: function (){
+                    $('#model_add_to_cart_button').attr('disabled', true)
+                    $('#model_add_to_cart_button').
+                    html('<span class="spinner-border spinner-border-sm text-light" role="status"  aria-hidden="true"></span>Loading...')
+                },
                 success: function(response) {
 
                   toastr.success(response.message);
@@ -207,6 +210,10 @@
                 error: function(xhr, status, error) {
                    let errorMessage = xhr.responseJSON.message;
                    toastr.error(errorMessage);
+                },
+                complete: function() {
+                    $('#model_add_to_cart_button').html('add to cart')
+                    $('#model_add_to_cart_button').attr('disabled', false)
                 }
             });
         });
