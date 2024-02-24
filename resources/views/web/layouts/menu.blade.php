@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg main_menu">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">
-            <img src="{{ asset('web/images/logo.png')}}" alt="FoodPark" class="img-fluid">
+            <img src="{{ asset('web/images/logo.png') }}" alt="FoodPark" class="img-fluid">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -59,7 +59,10 @@
                     </div>
                 </li>
                 <li>
-                    <a class="cart_icon"><i class="fas fa-shopping-basket"></i> <span>5</span></a>
+                    {{-- cart total count is been updated from global ajax script --}}
+                    <a class="cart_icon"><i class="fas fa-shopping-basket"></i> 
+                        <span class="cart_item_count"> {{ count(Cart::content()) }} </span>
+                    </a>
                 </li>
                 <li>
                     <a href="{{ route('login') }}"><i class="fas fa-user"></i></a>
@@ -76,7 +79,7 @@
 <div class="fp__menu_cart_area">
     <div class="fp__menu_cart_boody">
         <div class="fp__menu_cart_header">
-            <h5>total item (05)</h5>
+            <h5>total item (<span class="cart_item_count" style="font-size: 20px;">{{ count(Cart::content()) }}</span>)</h5>
             <span class="close_cart"><i class="fal fa-times"></i></span>
         </div>
 
@@ -84,7 +87,7 @@
         <ul class="cart_content">
 
         </ul>
-        <p class="subtotal">sub total <span>{{ currencyPosition(cartTotal()) }}</span></p>
+        <p class="subtotal">sub total <span class="cart_sub_total"></span></p>
         <a class="cart_view" href="cart_view.html"> view cart</a>
         <a class="checkout" href="check_out.html">checkout</a>
     </div>

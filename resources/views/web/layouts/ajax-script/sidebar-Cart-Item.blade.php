@@ -1,3 +1,6 @@
+<input type="hidden" class="cart_total" value="{{ currencyPosition(cartTotal()) }}">
+<input type="hidden" class="get_cart_product_count" value="{{ count(Cart::content()) }}">
+
 @foreach ($cartProducts as $cartProduct)
 <li>
     <div class="menu_cart_img">
@@ -12,7 +15,7 @@
 
             {{ 
                @$cartProduct->options->product_size['price'] ? 
-               '{'. currencyPosition(@$cartProduct->options->product_size['price']) .'}' : '' 
+               '{'. currencyPosition( @$cartProduct->options->product_size['price']) .'}' : '' 
             }} 
         </p>
 

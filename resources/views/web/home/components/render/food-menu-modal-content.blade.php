@@ -204,6 +204,7 @@
                 },
                 success: function(response) {
                   updateCart()
+
                   toastr.success(response.message);
    
                 },

@@ -40,8 +40,18 @@ function updateCart() {
  
         },
         success: function(response){
-            // console.log(response);
+
+            // render cart 
             $('.cart_content').html(response)
+
+            // update cart item count
+            let cartItemCount = $('.get_cart_product_count').val();
+            $('.cart_item_count').text(cartItemCount)
+            
+            // update cart total price
+            let cartTotal = $('.cart_total').val();
+            $('.cart_sub_total').text(cartTotal)
+
         },
         error: function(xhr, status, error){
             // console.error(error)
