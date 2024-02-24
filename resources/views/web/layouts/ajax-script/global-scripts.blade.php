@@ -63,4 +63,24 @@ function updateCart() {
     })
 }
 
+
+// update cart 
+function removeCartProduct(cartId) {
+    $.ajax({
+        method : 'DELETE',
+        url : '{{ route("delete.cart.product", ':cartId') }}'.replace(':cartId', cartId),
+        success: function(response){
+
+            toastr.success(response.message)
+        },
+        error: function(xhr, status, error){
+            // console.error(error)
+            toastr.error("An error occurred");
+        },
+        complete: function(){
+            updateCart()
+        },
+    })
+}
+
 </script>

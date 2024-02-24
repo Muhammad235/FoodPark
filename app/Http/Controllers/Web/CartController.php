@@ -79,5 +79,23 @@ class CartController extends Controller
         }
 
     }
+
+    public function destroy($cartRowId)
+    {
+        try {
+            Cart::remove($cartRowId);
+
+            return response([
+                'status' => true,
+                'message' => 'Product deleted from cart successfully'
+            ], 200);
+
+        } catch (\Exception $e) {
+            return response([
+                'status' => false,
+                'message' => 'An error occurred'
+            ], 500);
+        }
+    }
     
 }

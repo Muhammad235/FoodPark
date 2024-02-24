@@ -30,6 +30,7 @@ Route::get('food-menu-modal/{productId}', [WebPageController::class, 'ProductMen
 // Cart Route
 Route::post('add-to-cart', [CartController::class, 'store'])->name('add-to-cart.store');
 Route::get('get-cart-products', [CartController::class, 'getCartProducts'])->name('get.cart.products');
+Route::delete('delete-cart-product/{id}', [CartController::class, 'destroy'])->name('delete.cart.product');
 
 
 
