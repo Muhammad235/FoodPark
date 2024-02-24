@@ -3,7 +3,6 @@
 use Illuminate\Support\Str;
 
 /** Create Unique slug **/
-
 if (!function_exists('generateUniqueSlug')) {
     function generateUniqueSlug($model, $name) : string{
         $modelClass = "App\\Models\\$model";
@@ -24,6 +23,8 @@ if (!function_exists('generateUniqueSlug')) {
 }
 
 
+
+/** Determine Currency position and icon **/
 if(!function_exists('currencyPosition')){
     function currencyPosition($price) : string
     {
@@ -32,5 +33,27 @@ if(!function_exists('currencyPosition')){
         }else{
             return $price . config('settings.currency_icon');
         }
+    }
+}
+
+
+/**  Calculate cart total price **/
+if(!function_exists('cartTotal')){
+    function cartTotal() 
+    {
+        $total = 0;
+        foreach(Cart::content() as $product)
+        {
+            $productPrice = $product->price;
+            $sizePrice = $product->options?->product_size['price'] ?? 0;
+            $optionsPrice = 0;
+            foreach($product->options->product_options as $productOption){
+                $optionsPrice += $productOption['price'];
+            }
+
+            $total += ($productPrice + $sizePrice + $optionsPrice) * intval($product->qty);
+        } 
+
+        return $total;
     }
 }

@@ -15,7 +15,7 @@ class CartController extends Controller
         $cartProducts = Cart::content();
 
         return view('web.layouts.ajax-script.sidebar-Cart-Item', compact('cartProducts'))->render();
-    }
+    } 
     public function store(Request $request){
 
         try {

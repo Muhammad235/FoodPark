@@ -7,10 +7,21 @@
         <a class="title" href="{{ $cartProduct->options->product_info['slug'] }}">{{ $cartProduct->name }} </a>
         <p class="size">Qty: {{ $cartProduct->qty }}</p>
 
-        <p class="size">{{ @$cartProduct->options->product_size[0]['name'] }}</p>
+        <p class="size">
+            {{ @$cartProduct->options->product_size['name'] }} 
+
+            {{ 
+               @$cartProduct->options->product_size['price'] ? 
+               '{'. currencyPosition(@$cartProduct->options->product_size['price']) .'}' : '' 
+            }} 
+        </p>
 
         @foreach ($cartProduct->options->product_options as $productOptions)
-            <span class="extra">{{ @$productOptions['name'] }}</span>   
+            <span class="extra">{{ @$productOptions['name'] }} 
+                 {{  @$productOptions['price'] ? 
+                     '{'. currencyPosition(@$productOptions['price']) .'}' : '' 
+                 }}
+            </span>   
         @endforeach
         
         <p class="price">{{ currencyPosition($cartProduct->price) }}</p>
