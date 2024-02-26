@@ -6,7 +6,7 @@ function loadProductModal(productId) {
         method : 'GET',
         url : '{{ route("food.menu.modal", ':productId') }}'.replace(':productId', productId),
         beforeSend: function(){
-            $('.overlay').removeClass('d-none');
+            $('.overlay-container').removeClass('d-none');
             $('.overlay').addClass('active');
         },
         success: function(response){
@@ -24,7 +24,7 @@ function loadProductModal(productId) {
             toastr.success("An error occurred");
         },
         complete: function(){
-            $('.overlay').removeClass('active');
+            $('.overlay-container').removeClass('active');
             $('.overlay').addClass('d-none');
         },
     })
@@ -32,13 +32,10 @@ function loadProductModal(productId) {
 
 
 // update cart 
-function updateCart() {
+function updateCart(callback = null) {
     $.ajax({
         method : 'GET',
         url : "{{ route('get.cart.products') }}",
-        beforeSend: function(){
- 
-        },
         success: function(response){
 
             // render cart 
@@ -52,13 +49,13 @@ function updateCart() {
             let cartTotal = $('.cart_total').val();
             $('.cart_sub_total').text(cartTotal)
 
+            if(callback && typeof callback === 'function') {
+                callback();
+            }
         },
         error: function(xhr, status, error){
             let errorMessage = xhr.responseJSON.message;
             toastr.error(errorMessage);
-        },
-        complete: function(){
-
         },
     })
 }
@@ -70,20 +67,20 @@ function removeCartProduct(cartId) {
         method : 'DELETE',
         url : '{{ route("delete.cart.product", ':cartId') }}'.replace(':cartId', cartId),
         beforeSend: function () {
-            $('.overlay').removeClass('d-none');
+            $('.overlay-container').removeClass('d-none');
             $('.overlay').addClass('active');
         },
         success: function(response){
-            updateCart()
-            toastr.success(response.message)
+            updateCart(function () {
+                toastr.success(response.message)
+                $('.overlay-container').addClass('d-none');
+                $('.overlay').removeClass('active');
+            })
+            
         },
         error: function(xhr, status, error){
             let errorMessage = xhr.responseJSON.message;
             toastr.error(errorMessage);
-        },
-        complete: function(){
-            $('.overlay').removeClass('active');
-            $('.overlay').addClass('d-none');
         },
     })
 }
