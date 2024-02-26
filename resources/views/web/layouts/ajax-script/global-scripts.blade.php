@@ -54,8 +54,8 @@ function updateCart() {
 
         },
         error: function(xhr, status, error){
-            // console.error(error)
-            // toastr.success("An error occurred");
+            let errorMessage = xhr.responseJSON.message;
+            toastr.error(errorMessage);
         },
         complete: function(){
 
@@ -69,16 +69,21 @@ function removeCartProduct(cartId) {
     $.ajax({
         method : 'DELETE',
         url : '{{ route("delete.cart.product", ':cartId') }}'.replace(':cartId', cartId),
+        beforeSend: function () {
+            $('.overlay').removeClass('d-none');
+            $('.overlay').addClass('active');
+        },
         success: function(response){
-
+            updateCart()
             toastr.success(response.message)
         },
         error: function(xhr, status, error){
-            // console.error(error)
-            toastr.error("An error occurred");
+            let errorMessage = xhr.responseJSON.message;
+            toastr.error(errorMessage);
         },
         complete: function(){
-            updateCart()
+            $('.overlay').removeClass('active');
+            $('.overlay').addClass('d-none');
         },
     })
 }
