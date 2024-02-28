@@ -152,10 +152,8 @@
             const totalPrice = (basePice + baseSizePrice + baseOptionPrice) * CurrentQuantity;
 
             // Update the total price value
-            // $('#total_price').text("{{ config('settings.currency_icon') }}" + totalPrice);
+            $('#total_price').text("{{ config('settings.currency_icon') }}" + totalPrice);
             
-            $('#total_price').text(totalPrice);
-
         }
 
 

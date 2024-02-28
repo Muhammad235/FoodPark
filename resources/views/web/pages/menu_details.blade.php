@@ -105,14 +105,14 @@
                                 <div class="quantity_btn_area d-flex flex-wrapa align-items-center">
                                     <div class="quantity_btn">
                                         <a class="btn btn-danger v_decreament"><i class="fal fa-minus"></i></a>
-                                        <input type="text" placeholder="1" id="v_quantity" value="1" readonly>
+                                        <input type="text" placeholder="1" value="1" id="v_quantity" readonly>
                                         <a class="btn btn-success v_increament"><i class="fal fa-plus"></i></a>
                                     </div>
-                                    @if($product->offer_price > 0)
-                                        <h3 id="v_total_price">{{ currencyPosition($product->offer_price) }} </h3> 
-                                    @else
-                                        <h3 id="v_total_price">{{ currencyPosition($product->price) }} </h3>
-                                    @endif 
+
+                                        <h3 id="v_total_price">
+                                            {{ $product->offer_price > 0 ? currencyPosition($product->offer_price) : 
+                                            currencyPosition($product->price) }} 
+                                        </h3> 
                                 </div>
                             </div>
                         </form>
@@ -461,9 +461,8 @@
                 // Calculate the total price 
                 const totalPrice = (basePice + baseSizePrice + baseOptionPrice) * CurrentQuantity;
 
-
                 // Update the total price value
-                $('#v_total_price').text(totalPrice);
+                $('#v_total_price').text("{{ config('settings.currency_icon') }}" + totalPrice);
 
             }
 
