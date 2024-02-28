@@ -104,9 +104,9 @@
                                 <h5>select quantity</h5>
                                 <div class="quantity_btn_area d-flex flex-wrapa align-items-center">
                                     <div class="quantity_btn">
-                                        <button class="btn btn-danger"><i class="fal fa-minus"></i></button>
+                                        <a class="btn btn-danger v_decreament"><i class="fal fa-minus"></i></a>
                                         <input type="text" placeholder="1" id="v_quantity" value="1" readonly>
-                                        <button class="btn btn-success"><i class="fal fa-plus"></i></button>
+                                        <a class="btn btn-success v_increament"><i class="fal fa-plus"></i></a>
                                     </div>
                                     @if($product->offer_price > 0)
                                         <h3 id="v_total_price">{{ currencyPosition($product->offer_price) }} </h3> 
@@ -407,6 +407,29 @@
             $('.v_product_option').on('change', function () {
                 updateMenuTotalPrice()
 
+            })
+
+            // Product increament and decreament logic
+            $('.v_increament').on('click', function(){
+                let quantity = $('#v_quantity');
+
+                let CurrentQuantity = parseFloat(quantity.val())
+
+                quantity.val(++CurrentQuantity)
+
+                updateMenuTotalPrice();
+            })
+
+            $('.v_decreament').on('click', function(){
+                let quantity = $('#v_quantity');
+
+                let CurrentQuantity = parseFloat(quantity.val())
+
+                if (CurrentQuantity > 1) {
+                    quantity.val(CurrentQuantity - 1)
+                    
+                    updateMenuTotalPrice();   
+                }
             })
 
 
