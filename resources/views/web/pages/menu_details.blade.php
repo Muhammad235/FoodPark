@@ -56,57 +56,69 @@
                             <i class="far fa-star"></i>
                             <span>(201)</span>
                         </p>
-                        <h3 class="price">
-                            @if($product->offer_price > 0) 
-                                {{ currencyPosition($product->offer_price) }}
-                                <del>{{ currencyPosition($product->price) }} </del> 
-                            @else
-                                {{ currencyPosition($product->offer_price) }}
-                            @endif
-                        </h3>
-                        <p class="short_description">{{ $product->short_description  }}</p>
+                        
+                        <form>
+                            <h4 class="price"> 
+                                @if($product->offer_price > 0)
+                                    <input type="hidden" name="base_price" class="v_base_price" value="{{ $product->offer_price }}">
+                                
+                                    {{ currencyPosition($product->offer_price) }}
+                                    <del>{{ currencyPosition($product->price) }} </del> 
+                                @else
+                                    {{ currencyPosition($product->price) }}
+                                    <input type="hidden" name="base_price" class="v_base_price" value="{{ $product->price }}">
+                                @endif 
+                            </h4>
 
-                        @if ($product->productSize()->exists())
-                            <div class="details_size">
-                                <h5>select size</h5>
-                                <div class="form-check">
-                                    @foreach ($product->productSize as $productSize) 
-                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="size-{{ $productSize->id }}" checked>
-                                        <label class="form-check-label" for="size-{{ $productSize->id }}">
-                                            {{ @$productSize->name }} <span>+  {{ currencyPosition(@$productSize->price) }}</span>
-                                        </label>
-                                    @endforeach
-                                </div>
-                            </div>                            
-                        @endif
- 
-                        @if ($product->productOption()->exists())
-                            <div class="details_extra_item">
-                                <h5>select option <span>(optional)</span></h5>
-                                    @foreach ($product->productOption as $productOption)
+                            <p class="short_description">{{ $product->short_description  }}</p>
+
+                            @if ($product->productSize()->exists())
+                                <div class="details_size">
+                                    <h5>select size</h5>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="option-{{ @$productOption->id }}">
-                                        <label class="form-check-label" for="option-{{ $productOption->id }}">
-                                            {{ @$productOption->name }} <span>+ ${{ @$productOption->price}}</span>
-                                        </label>
+                                        @foreach ($product->productSize as $productSize) 
+                                            <input class="form-check-input v_product_size" type="radio" data-price="{{ $productSize->price }}" name="flexRadioDefault" id="size-{{ $productSize->id }}" checked>
+                                            <label class="form-check-label" for="size-{{ $productSize->id }}">
+                                                {{ @$productSize->name }} <span>+  {{ currencyPosition($productSize->price) }}</span>
+                                            </label>
+                                        @endforeach
                                     </div>
-                                    @endforeach
-                            </div>                
-                        @endif
+                                </div>                            
+                            @endif
+    
+                            @if ($product->productOption()->exists())
+                                <div class="details_extra_item">
+                                    <h5>select option <span>(optional)</span></h5>
+                                        @foreach ($product->productOption as $productOption)
+                                        <div class="form-check">
+                                            <input class="form-check-input v_product_option" data-price="{{ $productOption->price }}" type="checkbox" value="" id="option-{{ @$productOption->id }}">
+                                            <label class="form-check-label" for="option-{{ $productOption->id }}">
+                                                {{ @$productOption->name }} <span>+ ${{ @$productOption->price}}</span>
+                                            </label>
+                                        </div>
+                                        @endforeach
+                                </div>                
+                            @endif
 
-                        <div class="details_quantity">
-                            <h5>select quantity</h5>
-                            <div class="quantity_btn_area d-flex flex-wrapa align-items-center">
-                                <div class="quantity_btn">
-                                    <button class="btn btn-danger"><i class="fal fa-minus"></i></button>
-                                    <input type="text" placeholder="1">
-                                    <button class="btn btn-success"><i class="fal fa-plus"></i></button>
+                            <div class="details_quantity">
+                                <h5>select quantity</h5>
+                                <div class="quantity_btn_area d-flex flex-wrapa align-items-center">
+                                    <div class="quantity_btn">
+                                        <button class="btn btn-danger"><i class="fal fa-minus"></i></button>
+                                        <input type="text" placeholder="1" id="v_quantity" value="1" readonly>
+                                        <button class="btn btn-success"><i class="fal fa-plus"></i></button>
+                                    </div>
+                                    @if($product->offer_price > 0)
+                                        <h3 id="v_total_price">{{ currencyPosition($product->offer_price) }} </h3> 
+                                    @else
+                                        <h3 id="v_total_price">{{ currencyPosition($product->price) }} </h3>
+                                    @endif 
                                 </div>
-                                <h3>$320.00</h3>
                             </div>
-                        </div>
+                        </form>
+
                         <ul class="details_button_area d-flex flex-wrap">
-                            <li><a class="common_btn" href="#">add to cart</a></li>
+                            <li><a class="common_btn" href="#" id="model_add_to_cart_button">add to cart</a></li>
                             <li><a class="wishlist" href="#"><i class="far fa-heart"></i></a></li>
                         </ul>
                     </div>
@@ -215,6 +227,8 @@
                                             <div class="fp__post_review">
                                                 <h4>write a Review</h4>
                                                 <form>
+                                                  
+
                                                     <p class="rating">
                                                         <span>select your rating : </span>
                                                         <i class="fas fa-star"></i>
@@ -361,7 +375,7 @@
                                 <div class="quantity_btn_area d-flex flex-wrapa align-items-center">
                                     <div class="quantity_btn">
                                         <button class="btn btn-danger"><i class="fal fa-minus"></i></button>
-                                        <input type="text" placeholder="1">
+                                        <input type="text" placeholder="1"  readonly>
                                         <button class="btn btn-success"><i class="fal fa-plus"></i></button>
                                     </div>
                                     <h3>$320.00</h3>
@@ -382,3 +396,54 @@
         MENU DETAILS END
     ==============================-->
 @endsection
+
+@push('scripts')
+    <script>
+        $(document).ready(function(){
+            $('.v_product_size').on('change', function () {
+                updateMenuTotalPrice()
+            })
+
+            $('.v_product_option').on('change', function () {
+                updateMenuTotalPrice()
+
+            })
+
+
+            //update the total price based on the selected options
+            function updateMenuTotalPrice() {
+                let basePice = parseFloat($('.v_base_price').val());
+                let baseSizePrice = 0;
+                let baseOptionPrice = 0;
+
+                let quantity = $('#v_quantity');
+                let CurrentQuantity = parseFloat(quantity.val())
+
+
+                // Calculate the selected size price 
+                let SelectedSizePice = $('.v_product_size:checked');
+
+                if (SelectedSizePice.length > 0) {
+                    baseSizePrice = parseFloat(SelectedSizePice.data('price'));
+                }
+
+                // Calculate the selected options price 
+                let SelectedOptionPice = $('.v_product_option:checked');
+
+                $(SelectedOptionPice).each(function() {
+                    baseOptionPrice += parseFloat($(this).data('price'));
+                });
+
+
+                // Calculate the total price 
+                const totalPrice = (basePice + baseSizePrice + baseOptionPrice) * CurrentQuantity;
+
+
+                // Update the total price value
+                $('#v_total_price').text(totalPrice);
+
+            }
+
+        })
+    </script>
+@endpush

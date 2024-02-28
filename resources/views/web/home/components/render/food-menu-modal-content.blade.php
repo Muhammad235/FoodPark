@@ -81,7 +81,6 @@
         </div>
     </div>
     <ul class="details_button_area d-flex flex-wrap">
-        {{-- <li><button type="submit" class="common_btn" >add to cart</button></li> --}}
         <li><button class="common_btn" id="model_add_to_cart_button">add to cart</a></li>
     </ul>
     </div>
@@ -153,7 +152,9 @@
             const totalPrice = (basePice + baseSizePrice + baseOptionPrice) * CurrentQuantity;
 
             // Update the total price value
-            $('#total_price').text("{{ config('settings.currency_icon') }}" + totalPrice);
+            // $('#total_price').text("{{ config('settings.currency_icon') }}" + totalPrice);
+            
+            $('#total_price').text(totalPrice);
 
         }
 
