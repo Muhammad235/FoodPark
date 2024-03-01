@@ -58,6 +58,8 @@
                         </p>
                         
                         <form>
+                            <input type="hidden" name="product_id" class="product_id" value="{{ $product->id }}">
+
                             <h4 class="price"> 
                                 @if($product->offer_price > 0)
                                     <input type="hidden" name="base_price" class="v_base_price" value="{{ $product->offer_price }}">
@@ -77,7 +79,7 @@
                                     <h5>select size</h5>
                                     <div class="form-check">
                                         @foreach ($product->productSize as $productSize) 
-                                            <input class="form-check-input v_product_size" type="radio" data-price="{{ $productSize->price }}" name="flexRadioDefault" id="size-{{ $productSize->id }}" checked>
+                                            <input class="form-check-input v_product_size" type="radio" data-price="{{ $productSize->price }}" name="product_size" value="{{ $productSize->id }}" id="size-{{ $productSize->id }}">
                                             <label class="form-check-label" for="size-{{ $productSize->id }}">
                                                 {{ @$productSize->name }} <span>+  {{ currencyPosition($productSize->price) }}</span>
                                             </label>
@@ -91,7 +93,7 @@
                                     <h5>select option <span>(optional)</span></h5>
                                         @foreach ($product->productOption as $productOption)
                                         <div class="form-check">
-                                            <input class="form-check-input v_product_option" data-price="{{ $productOption->price }}" type="checkbox" value="" id="option-{{ @$productOption->id }}">
+                                            <input class="form-check-input v_product_option" name="product_option[]" data-price="{{ $productOption->price }}" type="checkbox" value="{{ $productOption->id }}" id="option-{{ @$productOption->id }}">
                                             <label class="form-check-label" for="option-{{ $productOption->id }}">
                                                 {{ @$productOption->name }} <span>+ ${{ @$productOption->price}}</span>
                                             </label>
@@ -115,14 +117,17 @@
                                         </h3> 
                                 </div>
                             </div>
-                        </form>
+                        
 
                         <ul class="details_button_area d-flex flex-wrap">
-                            <li><a class="common_btn" href="#" id="model_add_to_cart_button">add to cart</a></li>
+                            <li><button class="common_btn" id="add_to_cart_button">add to cart</button></li>
                             <li><a class="wishlist" href="#"><i class="far fa-heart"></i></a></li>
                         </ul>
+                        </form>
                     </div>
                 </div>
+
+
                 <div class="col-12 wow fadeInUp" data-wow-duration="1s">
                     <div class="fp__menu_description_area mt_100 xs_mt_70">
                         <ul class="nav nav-pills" id="pills-tab" role="tablist">
@@ -382,7 +387,7 @@
                                 </div>
                             </div>
                             <ul class="details_button_area d-flex flex-wrap">
-                                <li><a class="common_btn" href="#">add to cart</a></li>
+                                <li><button class="common_btn" id="add_to_cart_button">add to cart</button></li>
                             </ul>
                         </div>
                     </div>
@@ -400,6 +405,11 @@
 @push('scripts')
     <script>
         $(document).ready(function(){
+
+            $('.v_product_size').prop('checked', false);
+            $('.v_product_option').prop('checked', false);
+            $('#v_quantity').val(1);
+
             $('.v_product_size').on('change', function () {
                 updateMenuTotalPrice()
             })
@@ -463,8 +473,70 @@
 
                 // Update the total price value
                 $('#v_total_price').text("{{ config('settings.currency_icon') }}" + totalPrice);
-
             }
+
+            // Add product to cart
+
+            $('#add_to_cart_button').on('click', function(e) {
+                e.preventDefault(); 
+
+
+                // //validation
+                let selectedSize = $('.product_size');
+
+                if (selectedSize.length > 0) {
+                    if ($('.v_product_size:checked').val() === undefined) {
+                    toastr.error("Select a product size");
+                    return false;
+                    }
+                }
+
+                selectedOption = $('.v_product_option:checked'),
+
+                productOptionArray = [];
+
+                selectedOption.each(function() {
+                    productOptionArray.push($(this).val());
+                });
+
+
+                // form data to be sent
+                var formData = {
+                    product_id: $('.product_id').val(),
+                    product_size: $('.v_product_size:checked').val(),
+                    product_option: productOptionArray,
+                    quantity: $('#v_quantity').val(),
+                };
+
+                console.log(formData);
+
+                $.ajax({
+                    method: 'POST',
+                    url: '{{ route("add-to-cart.store") }}',
+                    dataType: 'json',
+                    data: formData,
+                    beforeSend: function (){
+                        $('#add_to_cart_button').attr('disabled', true)
+                        $('#add_to_cart_button').
+                        html('<span class="spinner-border spinner-border-sm text-light" role="status"  aria-hidden="true"></span>Loading...')
+                    },
+                    success: function(response) {
+                      updateCart()
+
+                    toastr.success(response.message);
+    
+                    },
+                    error: function(xhr, status, error) {
+                    let errorMessage = xhr.responseJSON.message;
+                    toastr.error(errorMessage);
+                    },
+                    complete: function() {
+                        $('#add_to_cart_button').html('add to cart')
+                        $('#add_to_cart_button').attr('disabled', false)
+                    }
+                });
+            });
+                
 
         })
     </script>
