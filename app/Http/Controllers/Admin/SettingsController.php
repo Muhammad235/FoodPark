@@ -8,6 +8,7 @@ use App\Services\SettingsService;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
+use Yoeunes\Toastr\Facades\Toastr;
 
 
 class SettingsController extends Controller
@@ -35,7 +36,7 @@ class SettingsController extends Controller
         $settingsService->clearCacheSettings();
 
         toastr()->success("Updated successfully");
-        
+
         return to_route('admin.setting.index');
     }
 }

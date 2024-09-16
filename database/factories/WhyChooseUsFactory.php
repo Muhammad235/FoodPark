@@ -19,7 +19,7 @@ class WhyChooseUsFactory extends Factory
         return [
             'icon' => 'fas fa-percent',
             'title' => fake()->sentence(),
-            'shot_description' => fake()->sentence(),
+            'short_description' => fake()->sentence(),
             'status' => fake()->boolean(),
         ];
     }

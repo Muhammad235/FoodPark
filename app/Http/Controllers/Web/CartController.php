@@ -15,11 +15,11 @@ class CartController extends Controller
         $cartProducts = Cart::content();
 
         return view('web.layouts.ajax-script.sidebar-Cart-Item', compact('cartProducts'))->render();
-    } 
+    }
     public function store(Request $request){
 
         try {
-            
+
             $product = Product::with(['productSize', 'productOption'])->findOrFail($request->product_id);
             $productSize = $product->productSize()->where('id', $request->product_size)->first();
 
@@ -60,7 +60,7 @@ class CartController extends Controller
                 'id' => $product->id,
                 'name' => $product->name,
                 'qty' => $request->quantity,
-                'price' => $product->offer_price > 0 ? $product->offer_price : $product->price, 
+                'price' => $product->offer_price > 0 ? $product->offer_price : $product->price,
                 'weight' => 0,
                 'options' => $options,
             ]);
@@ -97,5 +97,5 @@ class CartController extends Controller
             ], 500);
         }
     }
-    
+
 }

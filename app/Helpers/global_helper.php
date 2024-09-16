@@ -23,7 +23,6 @@ if (!function_exists('generateUniqueSlug')) {
 }
 
 
-
 /** Determine Currency position and icon **/
 if(!function_exists('currencyPosition')){
     function currencyPosition($price) : string
