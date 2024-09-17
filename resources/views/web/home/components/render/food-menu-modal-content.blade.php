@@ -20,24 +20,24 @@
         <i class="far fa-star"></i>
         <span>(201)</span>
     </p>
-    <h4 class="price"> 
+    <h4 class="price">
         @if($product->offer_price > 0)
             <input type="hidden" name="base_price" value="{{ $product->offer_price }}">
-        
+
             {{ currencyPosition($product->offer_price) }}
-            <del>{{ currencyPosition($product->price) }} </del> 
+            <del>{{ currencyPosition($product->price) }} </del>
         @else
             {{ currencyPosition($product->price) }}
             <input type="hidden" name="base_price" value="{{ $product->price }}">
-        @endif 
+        @endif
     </h4>
 
     @if ($product->productSize()->exists())
         <div class="details_size">
             <h5>select size</h5>
             <div class="form-check">
-                @foreach ($product->productSize as $productSize) 
-                
+                @foreach ($product->productSize as $productSize)
+
                     <input class="form-check-input" type="radio" name="product_size" id="size-{{ $productSize->id }}" value="{{ $productSize->id }}" data-price="{{ $productSize->price }}" >
 
                     <label class="form-check-label" for="size-{{ $productSize->id }}">
@@ -45,7 +45,7 @@
                     </label>
                 @endforeach
             </div>
-        </div>                            
+        </div>
     @endif
 
     @if ($product->productOption()->exists())
@@ -60,7 +60,7 @@
                     </label>
                 </div>
                 @endforeach
-        </div>                
+        </div>
     @endif
 
     <div class="details_quantity">
@@ -73,11 +73,11 @@
 
             </div>
             @if($product->offer_price > 0)
-        
-                <h3 id="total_price">{{ currencyPosition($product->offer_price) }} </h3> 
+
+                <h3 id="total_price">{{ currencyPosition($product->offer_price) }} </h3>
             @else
                 <h3 id="total_price">{{ currencyPosition($product->price) }} </h3>
-            @endif 
+            @endif
         </div>
     </div>
     <ul class="details_button_area d-flex flex-wrap">
@@ -117,8 +117,8 @@
 
             if (CurrentQuantity > 1) {
                 quantity.val(CurrentQuantity - 1)
-                
-                updateTotalPrice();   
+
+                updateTotalPrice();
             }
         })
 
@@ -133,14 +133,14 @@
             let CurrentQuantity = parseFloat(quantity.val())
 
 
-            // Calculate the selected size price 
+            // Calculate the selected size price
             let SelectedSizePice = $('input[name="product_size"]:checked');
 
             if (SelectedSizePice.length > 0) {
                 baseSizePrice = parseFloat(SelectedSizePice.data('price'));
             }
 
-            // Calculate the selected options price 
+            // Calculate the selected options price
             let SelectedOptionPice = $('input[name="product_option[]"]:checked');
 
             $(SelectedOptionPice).each(function() {
@@ -148,19 +148,19 @@
             });
 
 
-            // Calculate the total price 
+            // Calculate the total price
             const totalPrice = (basePice + baseSizePrice + baseOptionPrice) * CurrentQuantity;
 
             // Update the total price value
-            $('#total_price').text("{{ config('settings.currency_icon') }}" + totalPrice);
-            
+            $('#total_price').text("{{ config('settings.currency_icon') }}" + totalPrice.toFixed(2));
+
         }
 
 
         // Add product to cart
 
         $('#modal_add_to_cart_button').on('click', function(e) {
-            e.preventDefault(); 
+            e.preventDefault();
 
             //validation
             let selectedSize = $('input[name="product_size"]');
@@ -205,7 +205,7 @@
                   updateCart()
 
                   toastr.success(response.message);
-   
+
                 },
                 error: function(xhr, status, error) {
                    let errorMessage = xhr.responseJSON.message;

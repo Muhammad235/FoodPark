@@ -21,8 +21,8 @@
             <div class="col-12">
                 <div class="menu_filter d-flex flex-wrap justify-content-center">
                     <button class=" active" data-filter="*">all menu</button>
-                    @foreach ($categories as $category)    
-                        <button data-filter=".{{ $category->slug }}">{{ $category->name }}</button> 
+                    @foreach ($categories as $category)
+                        <button data-filter=".{{ $category->slug }}">{{ $category->name }}</button>
                     @endforeach
 
                 </div>
@@ -57,17 +57,16 @@
                                 <span>145</span>
                             </p>
                             <a class="title" href="{{ route('product.show', $product->slug) }}">{!! $product->name !!}</a>
-                            <h5 class="price"> 
-                                @if($product->offer_price > 0) 
+                            <h5 class="price">
+                                @if($product->offer_price > 0)
                                     {{ currencyPosition($product->offer_price) }}
-                                    <del>{{ currencyPosition($product->price) }} </del> 
+                                    <del>{{ currencyPosition($product->price) }} </del>
                                 @else
                                     {{ currencyPosition($product->offer_price) }}
-                                @endif     
+                                @endif
                             </h5>
                             <ul class="d-flex flex-wrap justify-content-center">
-                                <li><a href="javascript:;" onclick="loadProductModal('{{ $product->id }}')" data-bs-toggle="modal" data-bs-target="#cartModal"><i
-                                            class="fas fa-shopping-basket"></i></a></li>
+                                <li><a href="javascript:;" onclick="loadProductModal('{{ $product->id }}')" data-bs-toggle="modal" data-bs-target="#cartModal"><i class="fas fa-shopping-basket"></i></a></li>
                                 <li><a href="#"><i class="fal fa-heart"></i></a></li>
                                 <li><a href="#"><i class="far fa-eye"></i></a></li>
                             </ul>
@@ -75,7 +74,6 @@
                     </div>
                 </div>
                 @endforeach
-            
         </div>
     </div>
 </section>

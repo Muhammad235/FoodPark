@@ -33,7 +33,15 @@
             <span class="loader"></span>
         </div>
     </div>
-{{-- {{ Cart::destroy() }} --}}
+
+
+    {{-- {{ Cart::destroy() }} --}}
+
+    
+    <!-- FOOD MENU MODAL START -->
+    @include('web.home.components.food-menu-modal')
+    <!-- FOOD MODAL END -->
+
     <!--=============================
         TOPBAR START
     ==============================-->
@@ -92,10 +100,10 @@
         go to top
     </div>
     <!--=============================
-        SCROLL BUTTON END 
+        SCROLL BUTTON END
     ==============================-->
 
-    
+
     <!--=============================
         DISPLAY ANY ERROR START
     ==============================-->
@@ -108,7 +116,7 @@
     @endif
     <!--=============================
        DISPLAY ANY ERROR END
-    ==============================-->   
+    ==============================-->
 
 
     <!--jquery library js-->

@@ -1,7 +1,7 @@
     @extends('web.layouts.master')
 
     @section('content')
-    
+
     <!--=============================
         BANNER START
     ==============================-->
@@ -25,9 +25,6 @@
         OFFER ITEM START
     ==============================-->
     @include('web.home.components.offer-item')
-    <!-- ITEM MODAL START -->
-    @include('web.home.components.food-menu-modal')
-    <!-- ITEM MODAL END -->
     <!--=============================
         OFFER ITEM END
     ==============================-->
@@ -94,5 +91,5 @@
     <!--=============================
         BLOG 2 END
     ==============================-->
-    
+
     @endsection
