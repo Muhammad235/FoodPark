@@ -60,7 +60,7 @@
                 </li>
                 <li>
                     {{-- cart total count is been updated from global ajax script --}}
-                    <a class="cart_icon"><i class="fas fa-shopping-basket"></i> 
+                    <a class="cart_icon"><i class="fas fa-shopping-basket"></i>
                         <span class="cart_item_count"> {{ count(Cart::content()) }} </span>
                     </a>
                 </li>
@@ -88,7 +88,7 @@
 
         </ul>
         <p class="subtotal">sub total <span class="cart_sub_total">{{ currencyPosition(cartTotal()) }}</span></p>
-        <a class="cart_view" href="cart_view.html"> view cart</a>
+        <a class="cart_view" href="{{ route('cart.index') }}"> view cart</a>
         <a class="checkout" href="check_out.html">checkout</a>
     </div>
 </div>

@@ -7,9 +7,19 @@ use Illuminate\Http\Request;
 
 use App\Http\Controllers\Controller;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use View;
 
 class CartController extends Controller
 {
+
+    public function index()
+    {
+        $cartProducts = Cart::content();
+
+        return view('web.pages.cart_view', compact('cartProducts'));
+    }
+
+
     public function getCartProducts()
     {
         $cartProducts = Cart::content();
@@ -80,7 +90,7 @@ class CartController extends Controller
 
     }
 
-    public function destroy($cartRowId)
+    public function destroy(string $cartRowId)
     {
         try {
             Cart::remove($cartRowId);

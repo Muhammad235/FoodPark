@@ -14,9 +14,9 @@ use App\Http\Controllers\Controller;
 
 class WebPageController extends Controller
 {
-    public function index() : View 
+    public function index() : View
     {
-        
+
         $sliders = Slider::where('status', 1)->get();
         $sectionTitles = $this->getSectionTitle();
         $WhyChooseUs = WhyChooseUs::where('status', 1)->get();
@@ -26,7 +26,7 @@ class WebPageController extends Controller
         return view('web.home.index', compact('sliders', 'sectionTitles', 'WhyChooseUs', 'categories'));
     }
 
-    public function getSectionTitle() : Collection 
+    public function getSectionTitle() : Collection
     {
         $keys = ['why_choose_top_title', 'why_choose_main_title', 'why_choose_sub_title'];
         $titles = SectionTitle::whereIn('key', $keys)->pluck('value', 'key');
@@ -34,8 +34,8 @@ class WebPageController extends Controller
         return $titles;
     }
 
-    public function show(Product $product) : View 
-    {   
+    public function show(Product $product) : View
+    {
 
         // Retrieve related products from the same category as $product, excluding $product itself.
 
